@@ -1,0 +1,23 @@
+id: 35547
+name: ote-2023
+environments:
+  production:
+    memory: 1024
+    cli-memory: 512
+    network: vapor-network-1658424415
+    domain: otecamp.com
+    runtime: 'php-8.1:al2'
+    build:
+      - 'COMPOSER_MIRROR_PATH_REPOS=1 composer install --no-dev'
+      - 'php artisan event:cache'
+      - 'npm ci && npm run prd && rm -rf node_modules'
+  staging:
+    memory: 1024
+    cli-memory: 512
+    network: vapor-network-1658424415
+    domain: staging.otecamp.com
+    runtime: 'php-8.1:al2'
+    build:
+      - 'COMPOSER_MIRROR_PATH_REPOS=1 composer install'
+      - 'php artisan event:cache'
+      - 'npm ci && npm run prd && rm -rf node_modules'
