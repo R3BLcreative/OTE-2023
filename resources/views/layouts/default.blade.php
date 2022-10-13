@@ -51,9 +51,9 @@
 	<script src="https://kit.fontawesome.com/743b4f4183.js" crossorigin="anonymous"></script>
 </head>
 
-<body {{ $attributes->merge(['class' => 'font-sans font-normal text-body-100 mobile:text-md laptop:text-base tracking-wide antialiased bg-black bg-stage bg-no-repeat bg-center bg-fixed bg-cover']) }}>
+<body {{ $attributes->merge(['class' => 'font-sans font-normal text-body-100 mobile:text-md laptop:text-base tracking-wide antialiased']) }}>
 
-	<button tabindex="0" class="block h-0 w-0 fixed top-12 overflow-hidden font-semibold text-white rounded-md px-24 focus:h-fit focus:w-fit focus:z-[9999]" onclick="document.location+='#content';return false;">Skip to main content</button>
+	<button tabindex="0" class="block h-0 w-0 fixed top-12 overflow-hidden font-semibold text-black rounded-md px-24 focus:h-fit focus:w-fit focus:z-[9999] bg-white" onclick="document.location+='#content';return false;">Skip to main content</button>
 
 	{{-- HEADER --}}
 	@if (!request()->routeIs('coming-soon'))
@@ -61,16 +61,14 @@
 	@endif
 
 	{{-- MAIN CONTENT --}}
-	<main id="content" tabindex="-1" role="main" aria-label="Main Content" class="w-full">
-		<div {{ $main->attributes->merge(['class' => 'grid mobile:grid-cols-4 mobile:px-6 mobile:gap-6 mobile:w-full mobile:max-w-[432px] tablet:grid-cols-8 tablet:px-12 tablet:max-w-full laptop:grid-cols-12 laptop:px-16 laptop:gap-8 desktop:w-[1140px] desktop:max-w-[1140px] desktop:px-0 mx-auto py-20']) }}>
-
-			{{ $main }}
-
-		</div>
+	<main id="content" tabindex="-1" role="main" aria-label="Main Content" class="w-full relative min-h-screen">
+		{{ $main }}
 	</main>
 
 	{{-- FOOTER --}}
+	@if (!request()->routeIs('coming-soon'))
 	<x-components::footer />
+	@endif
 
 </body>
 

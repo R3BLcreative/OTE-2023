@@ -4,10 +4,89 @@
 
 /* -------------- BASE -------------- */
 @layer base {
+	.h1 {
+		@apply font-hero font-black tracking-widest mobile:text-5xl tablet:text-7xl drop-shadow-base;
+	}
+
+	.h2 {
+		@apply font-hero font-black tracking-widest mobile:text-4xl tablet:text-6xl drop-shadow-base;
+	}
+
+	.h3 {
+		@apply font-serif font-bold mobile:text-xl tablet:text-2xl tracking-widest;
+	}
 }
 
 /* -------------- COMPONENTS -------------- */
 @layer components {
+	section {
+		@apply even:border-y-2 even:border-gray-300;
+	}
+
+	row,
+	.row {
+		@apply grid mobile:grid-cols-4 mobile:px-6 mobile:gap-6 mobile:w-full tablet:grid-cols-8 tablet:px-12 tablet:max-w-full laptop:grid-cols-12 laptop:px-16 laptop:gap-8 desktop:w-[1140px] desktop:max-w-[1140px] desktop:px-0 mx-auto py-20;
+	}
+
+	.burger-toggle[aria-expanded='false'] .burger-lines {
+		@apply block;
+	}
+
+	.burger-toggle[aria-expanded='false'] .burger-close {
+		@apply hidden;
+	}
+
+	.burger-toggle[aria-expanded='true'] .burger-lines {
+		@apply hidden;
+	}
+
+	.burger-toggle[aria-expanded='true'] .burger-close {
+		@apply block;
+	}
+
+	.burger-menu[aria-expanded='false'] {
+		@apply mobile:hidden laptop:relative laptop:block laptop:col-span-10 laptop:justify-self-end;
+	}
+
+	.burger-menu[aria-expanded='true'] {
+		@apply mobile:block mobile:absolute mobile:top-full mobile:w-full mobile:bg-white mobile:shadow mobile:border-y mobile:border-y-gray-300 laptop:relative laptop:top-0 laptop:col-span-10 laptop:w-fit laptop:justify-self-end laptop:bg-transparent laptop:shadow-none laptop:border-0;
+	}
+
+	.burger-menu[aria-expanded='true'] li {
+		@apply mobile:first:pt-6 mobile:last:pb-6 laptop:first:pt-0 laptop:last:pb-0;
+	}
+
+	.btn {
+		@apply rounded-full px-6 py-3 font-bold flex gap-4 items-center mobile:text-sm desktop:text-base cursor-pointer leading-none tracking-wide uppercase transition-all ease-in-out shadow-md hover:px-7 w-fit border border-transparent;
+	}
+
+	.btn_primary {
+		@apply bg-yellow-400 text-black hover:bg-primary-100 hover:text-white;
+	}
+
+	.btn_primary_alt {
+		@apply bg-primary-100 text-white hover:bg-yellow-400 hover:text-black;
+	}
+
+	.btn_secondary {
+		@apply bg-yellow-400 text-black hover:bg-secondary-100 hover:text-black;
+	}
+
+	.btn_secondary_alt {
+		@apply bg-secondary-100 text-black hover:bg-yellow-400 hover:text-black;
+	}
+
+	.btn_alt {
+		@apply bg-yellow-400 text-black hover:bg-white hover:border-yellow-400;
+	}
+
+	.btn_alt_alt {
+		@apply bg-white hover:bg-yellow-400 hover:border-white hover:text-black;
+	}
+
+	.btn_tertiary {
+		@apply text-primary-100 font-semibold hover:underline hover:font-bold hover:text-black;
+	}
 }
 
 /* -------------- UTILITIES -------------- */
