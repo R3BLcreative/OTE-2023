@@ -61,7 +61,7 @@
 	@endif
 
 	{{-- MAIN CONTENT --}}
-	<main id="content" tabindex="-1" role="main" aria-label="Main Content" class="w-full relative min-h-screen">
+	<main id="content" tabindex="-1" role="main" aria-label="Main Content" class="w-full relative">
 		{{ $main }}
 	</main>
 

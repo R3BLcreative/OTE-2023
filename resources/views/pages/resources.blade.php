@@ -31,6 +31,8 @@
 			</x-slot>
 		</x-components::hero>
 
+		<x-components::resources />
+
 	</x-slot>
 
 </x-layouts::default>

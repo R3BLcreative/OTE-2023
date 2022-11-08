@@ -1,3 +1,6 @@
+{{-- SOCIAL --}}
+<x-components::social />
+
 <footer class="w-full bg-white shadow border-t border-t-gray-300" aria-label="Global Site Footer">
 	<row class="flex flex-col items-center justify-center gap-6" style="padding-top: 24px !important; padding-bottom: 10px !important;">
 		<div class="mobile:text-xs laptop:text-sm italic text-center flex mobile:flex-col tablet:flex-row gap-4 items-center justify-center">

@@ -30,10 +30,9 @@
 			</x-slot>
 		</x-components::hero>
 
-		{{-- TESTIMONIALS --}}
-
 		{{-- CAMP --}}
 		<x-components::tbe />
+
 	</x-slot>
 
 </x-layouts::default>

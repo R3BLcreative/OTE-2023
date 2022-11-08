@@ -81,7 +81,7 @@
 	}
 
 	.btn_alt_alt {
-		@apply bg-white hover:bg-yellow-400 hover:border-white hover:text-black;
+		@apply bg-white hover:border-white hover:text-black;
 	}
 
 	.btn_tertiary {

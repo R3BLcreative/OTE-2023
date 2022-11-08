@@ -1,4 +1,4 @@
-@props(['row', 'lcontent','rcontent'])
+@props(['row', 'lcontent', 'rcontent'])
 
 <section id="hero" {{ $attributes->merge(['class' => 'laptop:min-h-[500px]']) }}>
 	<row class="{{ $row }}">
