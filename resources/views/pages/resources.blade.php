@@ -19,7 +19,7 @@
 
 				<p class="mobile:text-base tablet:text-lg font-semibold leading-7">Everything parents, sponsors, and group leaders need to get/be prepared for camp. As we get closer to camp, new resources will be added. So, be sure to check back here regularly.</p>
 
-				<a href="{{ route('faqs') }}" title="Check out our FAQ page" aria-label="Check out our FAQ page" class="btn btn_alt_alt">
+				<a href="{{ route('questions') }}" title="Check out our FAQ page" aria-label="Check out our FAQ page" class="btn btn_alt_alt">
 					Got Questions?
 					<i class="fa-solid fa-comment-question fa-xl"></i>
 				</a>
@@ -31,6 +31,7 @@
 			</x-slot>
 		</x-components::hero>
 
+		{{-- RESOURCES --}}
 		<x-components::resources />
 
 	</x-slot>

@@ -23,7 +23,22 @@
 					Among Us
 				</h1>
 
-				<p class="mobile:text-base tablet:text-lg text-white font-semibold leading-7 text-center mb-16">Vivamus sagittis lacus vel augue laoreet rutrum faucibus. Phasellus laoreet lorem vel dolor tempus vehicula. Quisque ut dolor gravida, placerat libero vel, euismod.</p>
+				<p class="mobile:text-base tablet:text-lg text-white font-semibold leading-7 text-center mb-6">Vivamus sagittis lacus vel augue laoreet rutrum faucibus. Phasellus laoreet lorem vel dolor tempus vehicula. Quisque ut dolor gravida, placerat libero vel, euismod.</p>
+
+				<div class="flex flex-row gap-6 items-center justify-between w-full text-xl">
+					<strong class="text-secondary-100 font-black">DATES:</strong>
+					<span class="text-white font-semibold">{{ env('OTE_DATES') }}</span>
+				</div>
+				<div class="flex flex-row gap-6 items-center justify-between w-full text-xl">
+					<strong class="text-secondary-100 font-black">COST:</strong>
+					<span class="text-white font-semibold">{{ env('OTE_COST') }}/person</span>
+				</div>
+				<div class="flex flex-row gap-6 items-center justify-between w-full text-xl">
+					<strong class="text-secondary-100 font-black">DEPOSIT:</strong>
+					<span class="text-white font-semibold">{{ env('OTE_DEPOSIT') }}/person *</span>
+				</div>
+
+				<p class="text-white italic text-center mb-16">* The deposit is non-refundable upon cancellation.</p>
 
 				<x-components::more-info anchor="#guests" color="text-secondary-100" />
 

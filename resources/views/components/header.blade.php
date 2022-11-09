@@ -19,12 +19,12 @@
 					<x-slot name="link" title="Camp Resources">Resources</x-slot>
 				</x-components::main-nav-item>
 
-				<x-components::main-nav-item class="" route="about">
+				{{-- <x-components::main-nav-item class="" route="about">
 					<x-slot name="link" title="About OTE">About</x-slot>
-				</x-components::main-nav-item>
+				</x-components::main-nav-item> --}}
 
-				<x-components::main-nav-item class="" route="connect">
-					<x-slot name="link" title="Get in touch with us">Connect</x-slot>
+				<x-components::main-nav-item class="" route="questions">
+					<x-slot name="link" title="Got questions? Get answers!">Questions</x-slot>
 				</x-components::main-nav-item>
 
 				<li>

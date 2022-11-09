@@ -1,6 +1,7 @@
 import './bootstrap';
 
 document.addEventListener('DOMContentLoaded', function () {
+	// BURGER MENU
 	function toggleNavigation(toggle, menu) {
 		var isExpanded = menu.getAttribute('aria-expanded') === 'true';
 		menu.setAttribute('aria-expanded', !isExpanded);
@@ -40,6 +41,24 @@ document.addEventListener('DOMContentLoaded', function () {
 			if (e.keyCode === ESCAPE) {
 				closeNavigation(toggle, this);
 			}
+		});
+	});
+
+	// FAQ ACCORDION
+	function toggleAccordion(toggle, item) {
+		var isExpanded = item.getAttribute('aria-expanded') === 'true';
+		toggle.setAttribute('aria-expanded', !isExpanded);
+		item.setAttribute('aria-expanded', !isExpanded);
+	}
+
+	var faqs = document.querySelectorAll('.faq-item');
+
+	Array.prototype.forEach.call(faqs, function (el) {
+		var question = el.querySelector('.question');
+		var answer = el.querySelector('.answer');
+		question.addEventListener('click', function (e) {
+			e.preventDefault();
+			toggleAccordion(question, answer);
 		});
 	});
 });

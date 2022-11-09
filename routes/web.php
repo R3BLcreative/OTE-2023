@@ -19,21 +19,17 @@ Route::get('/resources', function () {
 	return view('pages.resources');
 })->name('resources');
 
-Route::get('/about', function () {
-	return view('pages.home');
-})->name('about');
-
-Route::get('/connect', function () {
-	return view('pages.home');
-})->name('connect');
+// Route::get('/about', function () {
+// 	return view('pages.home');
+// })->name('about');
 
 Route::get('/registration', function () {
 	return view('pages.home');
 })->name('registration');
 
-Route::get('/faqs', function () {
-	return view('pages.home');
-})->name('faqs');
+Route::get('/questions', function () {
+	return view('pages.questions');
+})->name('questions');
 
 // FALLBACK
 Route::fallback(FallbackController::class)->name('fallback');

@@ -19,6 +19,7 @@
 
 /* -------------- COMPONENTS -------------- */
 @layer components {
+	/* LAYOUT */
 	section {
 		@apply even:border-y-2 even:border-gray-300;
 	}
@@ -28,6 +29,7 @@
 		@apply grid mobile:grid-cols-4 mobile:px-6 mobile:gap-6 mobile:w-full tablet:grid-cols-8 tablet:px-12 tablet:max-w-full laptop:grid-cols-12 laptop:px-16 laptop:gap-8 desktop:w-[1140px] desktop:max-w-[1140px] desktop:px-0 mx-auto py-20;
 	}
 
+	/* BURGER MENU */
 	.burger-toggle[aria-expanded='false'] .burger-lines {
 		@apply block;
 	}
@@ -56,6 +58,7 @@
 		@apply mobile:first:pt-6 mobile:last:pb-6 laptop:first:pt-0 laptop:last:pb-0;
 	}
 
+	/* BUTTONS */
 	.btn {
 		@apply rounded-full px-6 py-3 font-bold flex gap-4 items-center mobile:text-sm desktop:text-base cursor-pointer leading-none tracking-wide uppercase transition-all ease-in-out shadow-md hover:px-7 w-fit border border-transparent;
 	}
@@ -86,6 +89,62 @@
 
 	.btn_tertiary {
 		@apply text-primary-100 font-semibold hover:underline hover:font-bold hover:text-black;
+	}
+
+	/* CARDS */
+	.card {
+		@apply rounded-md shadow-lg bg-white p-6 border border-surface-100;
+	}
+
+	/* COLUMNS */
+	.one {
+		@apply col-span-full;
+	}
+
+	.two {
+		@apply mobile:col-span-full tablet:col-span-4 laptop:col-span-6;
+	}
+
+	.three {
+		@apply mobile:col-span-full tablet:col-span-4 laptop:col-span-4;
+	}
+
+	.four {
+		@apply mobile:col-span-full tablet:col-span-4 laptop:col-span-3;
+	}
+
+	/* ACCORDIONS */
+	.faq-item .question .fa-plus,
+	.faq-item .question .fa-minus {
+		@apply transition-all ease-in-out duration-150;
+	}
+
+	.faq-item .question[aria-expanded='false'] .fa-plus {
+		@apply opacity-100 rotate-0;
+	}
+
+	.faq-item .question[aria-expanded='false'] .fa-minus {
+		@apply opacity-0 rotate-45;
+	}
+
+	.faq-item .question[aria-expanded='true'] .fa-plus {
+		@apply opacity-0 rotate-45;
+	}
+
+	.faq-item .question[aria-expanded='true'] .fa-minus {
+		@apply opacity-100 rotate-0;
+	}
+
+	.faq-item .answer {
+		@apply transition-all ease-in-out duration-300;
+	}
+
+	.faq-item .answer[aria-expanded='false'] {
+		@apply max-h-0 opacity-0 -mt-6;
+	}
+
+	.faq-item .answer[aria-expanded='true'] {
+		@apply max-h-[200px] opacity-100 mt-0;
 	}
 }
 

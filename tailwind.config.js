@@ -24,6 +24,7 @@ module.exports = {
 				tbe: "url('./images/bkg_tbe.jpg')",
 				ducks: "url('./images/bkg_duckies.jpg')",
 				worship: "url('./images/bkg_worship.jpg')",
+				questions: "url('./images/bkg_questions.jpg')",
 			},
 			colors: {
 				primary: {
