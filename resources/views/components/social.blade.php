@@ -10,7 +10,7 @@
 
 			<p class="text-white">Throughout the year we post updates and details on our Facebook page about camp. The best way to stay in-the-know about camp is to like our Facebook page.</p>
 
-			<a href="http://texasbaptistencampment.org/" title="Visit their website for more info" aria-label="Visit their website for more info" rel="external nofollow noopener" target="_blank" class="btn bg-white text-social-facebook !animate-none">
+			<a href="https://www.facebook.com/otecamp" title="Like us on Facebook" aria-label="LIke us on Facebook" rel="external nofollow noopener" target="_blank" class="btn bg-white text-social-facebook !animate-none">
 				Like Our Page
 				<i class="fa-solid fa-thumbs-up opacity-50"></i>
 			</a>
