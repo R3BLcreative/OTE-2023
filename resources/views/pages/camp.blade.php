@@ -56,7 +56,7 @@
 
 				{{-- PASTOR --}}
 				<div class="mobile:col-span-full tablet:col-span-4 laptop:col-span-6 text-center">
-					<x-components::guest img="img_JakeConner.jpg" name="Jake Conner" title="Pastor" border="border-white" :socials="[
+					<x-components::guest img="spkr_JakeConner.jpg" name="Jake Conner" title="Pastor" border="border-white" :socials="[
 						'fa-facebook' => [
 							'https://www.facebook.com/jake.conner.3517',
 							'Follow Jake on Facebook'
@@ -74,7 +74,7 @@
 
 				{{-- WORSHIP --}}
 				<div class="mobile:col-span-full tablet:col-span-4 laptop:col-span-6 text-center">
-					<x-components::guest img="img_MicahMariano.jpg" name="Micah Mariano" title="Worship" border="border-white" :socials="[
+					<x-components::guest img="spkr_MicahMariano.jpg" name="Micah Mariano" title="Worship" border="border-white" :socials="[
 						'fa-facebook' => [
 							'https://www.facebook.com/IAmMicahMariano/',
 							'Follow Micha on Facebook'
@@ -110,29 +110,29 @@
 				</div>
 
 				{{-- IMAGES --}}
-				<x-components::activity img="basketball.jpg" alt="Basketball Courts" />
+				<x-components::activity img="activity_basketball.jpg" alt="Basketball Courts" />
 
-				<x-components::activity img="bay.jpg" alt="Palacious Bay" />
+				<x-components::activity img="activity_bay.jpg" alt="Palacious Bay" />
 
-				<x-components::activity img="billiards.jpg" alt="Billiard Barn" />
+				<x-components::activity img="activity_billiards.jpg" alt="Billiard Barn" />
 
-				<x-components::activity img="canoe.jpg" alt="Canoes" />
+				<x-components::activity img="activity_canoe.jpg" alt="Canoes" />
 
-				<x-components::activity img="chair.jpg" alt="The Chair: Boat pulled float" />
+				<x-components::activity img="activity_chair.jpg" alt="The Chair: Boat pulled float" />
 
-				<x-components::activity img="dodgeball.jpg" alt="Dodgeball Courts" />
+				<x-components::activity img="activity_dodgeball.jpg" alt="Dodgeball Courts" />
 
-				<x-components::activity img="fishing.jpg" alt="Fish the bay" />
+				<x-components::activity img="activity_fishing.jpg" alt="Fish the bay" />
 
-				<x-components::activity img="gagaball.jpg" alt="Gaga Pits" />
+				<x-components::activity img="activity_gagaball.jpg" alt="Gaga Pits" />
 
-				<x-components::activity img="ninesquare.jpg" alt="Nine Square Courts" />
+				<x-components::activity img="activity_ninesquare.jpg" alt="Nine Square Courts" />
 
-				<x-components::activity img="pier.jpg" alt="Fish the pier" />
+				<x-components::activity img="activity_pier.jpg" alt="Fish the pier" />
 
-				<x-components::activity img="pool.jpg" alt="Swimming Pool" />
+				<x-components::activity img="activity_pool.jpg" alt="Swimming Pool" />
 
-				<x-components::activity img="rocks.jpg" alt="Rock Jetty" />
+				<x-components::activity img="activity_rocks.jpg" alt="Rock Jetty" />
 
 			</row>
 		</section>

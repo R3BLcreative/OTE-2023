@@ -1,8 +1,8 @@
-<section id="camp" class="bg-social-facebook bg-center bg-cover">
+<section id="facebook" class="bg-social-facebook bg-center bg-cover">
 	<row class="items-center">
 
 		<div class="mobile:col-span-full tablet:col-span-4 laptop:col-span-6 flex flex-col items-center justify-center">
-			<img src="{{ asset('images/img_social.jpg') }}" alt="An image of someone holding a mobile phone with several social icons floating around the phone." width="500" height="282" class="rounded shadow border-2 border-white">
+			<img src="{{ asset('images/footer_social.jpg') }}" alt="An image of someone holding a mobile phone with several social icons floating around the phone." width="500" height="282" class="rounded shadow border-2 border-white">
 		</div>
 
 		<div class="mobile:col-span-full tablet:col-span-4 laptop:col-span-6 flex flex-col items-start gap-8">
@@ -15,6 +15,5 @@
 				<i class="fa-solid fa-thumbs-up opacity-50"></i>
 			</a>
 		</div>
-
 	</row>
 </section>
