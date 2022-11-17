@@ -20,8 +20,8 @@
 				<h3 class="h3 mb-4 text-3xl text-yellow-500">Send Payments To:</h3>
 				<p class="text-xl text-body-100 leading-8">
 					<strong>Over the Edge Preteen Camp</strong><br>
-					123456 Some Street<br>
-					City, TX 12345
+					4100 North Laurent<br>
+					Victoria, TX 77901
 				</p>
 			</div>
 		</div>
