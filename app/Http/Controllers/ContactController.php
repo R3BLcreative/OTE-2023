@@ -30,8 +30,8 @@ class ContactController extends Controller {
 
 		// Store request in DB
 		$msg = ContactMsg::create([
-			'fname'		=> strtolower($request->input('fname')),
-			'lname'		=> strtolower($request->input('lname')),
+			'fname'		=> ucwords(strtolower($request->input('fname'))),
+			'lname'		=> ucwords(strtolower($request->input('lname'))),
 			'email'		=> strtolower($request->input('email')),
 			'subject'	=> $request->input('subject'),
 			'message'	=> $request->input('message')

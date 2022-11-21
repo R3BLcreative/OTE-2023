@@ -1,8 +1,9 @@
 <section id="reg-step-one" class="text-white bg-body-100">
 	<row class="">
 
-		<div class="col-span-full flex flex-col items-start gap-8">
-			<h2 class="h2 text-center text-yellow-500">STEP 2</h2>
+		<div class="col-span-full">
+			<span class="text-2xl text-body-50 font-serif font-semibold">STEP 2</span>
+			<h2 class="h2 !text-5xl !drop-shadow-sm text-yellow-500">Deposit</h2>
 		</div>
 
 		<div class="mobile:col-span-full tablet:col-span-4 laptop:col-span-6 flex flex-col gap-8">

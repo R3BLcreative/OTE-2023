@@ -6,7 +6,11 @@
 		</div>
 
 		<div class="mobile:col-span-full tablet:col-span-4 laptop:col-span-6 flex flex-col items-start gap-8">
-			<h2 class="h2 text-center text-yellow-500">STEP 1</h2>
+
+			<div>
+				<span class="text-2xl text-body-50 font-serif font-semibold">STEP 1</span>
+				<h2 class="h2 !text-5xl !drop-shadow-sm text-yellow-500">Group Registration</h2>
+			</div>
 
 			<p class="font-semibold">You or your group leader needs to register the church, group, or family for camp. Having your group details allows us to make sure all your sponsors and campers are assigned to your group and we have your numbers correct for camp.</p>
 

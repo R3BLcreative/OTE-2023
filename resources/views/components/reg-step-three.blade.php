@@ -2,7 +2,10 @@
 	<row class="items-center">
 
 		<div class="col-span-full flex flex-col items-center justify-center gap-8">
-			<h2 class="h2 text-center text-yellow-500">STEP 3</h2>
+			<div class="text-center">
+				<span class="text-2xl text-body-50 font-serif font-semibold">STEP 3</span>
+				<h2 class="h2 !text-6xl !drop-shadow-sm text-yellow-500">Sponsor & Camper Registration</h2>
+			</div>
 
 			<p class="text-center font-semibold">Once you have registered your group, you can send the sponsor and camper registration links out to your adult sponsors and parents. The only thing they will need to know from you is the group name you registered.</p>
 

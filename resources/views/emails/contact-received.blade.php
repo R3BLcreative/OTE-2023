@@ -6,14 +6,14 @@
 </head>
 
 <body>
-	<p>Hey {{ ucfirst($msg->fname) }},</p>
+	<p>Hey {{ $msg->fname }},</p>
 
 	<p>Thanks for reaching out! This message is simply a courtesy message to let you know that we have received your contact form submission. One of our admins will be reaching out to you regarding your message within 24-48 hours. Feel free to reply to this message if you have any further questions, or would like to contact us directly in the future.</p>
 
 	<p>The details you submitted on the form are listed below for your reference.</p>
 
 	<ul>
-		<li><strong>Name:</strong> {{ ucwords($msg->fname.' '.$msg->lname) }}</li>
+		<li><strong>Name:</strong> {{ $msg->fname.' '.$msg->lname }}</li>
 		<li><strong>Email:</strong> {{ $msg->email }}</li>
 		<li><strong>Subject:</strong> {{ $msg->subject }}</li>
 		<li><strong>Message:</strong><br><br>
