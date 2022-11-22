@@ -39,7 +39,9 @@
 		</x-components::hero>
 
 		{{-- GROUP REG FORM --}}
-		<x-components::groups />
+		<x-components::registrations id="group">
+			<x-forms::groups />
+		</x-components::registrations>
 
 	</x-slot>
 

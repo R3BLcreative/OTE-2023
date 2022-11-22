@@ -39,7 +39,9 @@
 		</x-components::hero>
 
 		{{-- CAMPER REG FORM --}}
-		<x-components::campers />
+		<x-components::registrations id="camper">
+			<x-forms::campers :groups="$groups" />
+		</x-components::registrations>
 
 	</x-slot>
 

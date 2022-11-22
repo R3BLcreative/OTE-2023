@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Models\Group;
 use App\Models\ContactMsg;
+use App\Mail\SponsorRegLeaderNotify;
+use App\Mail\SponsorRegAdminNotify;
 use App\Mail\GroupRegLeaderNotify;
 use App\Mail\GroupRegAdminNotify;
 use App\Mail\ContactReceived;
@@ -57,15 +59,11 @@ Route::prefix('registration')->group(function () {
 
 	Route::post('/groups', [RegistrationController::class, 'groups'])->name('groups.store');
 
-	Route::get('/adult', function () {
-		return view('pages.adult');
-	})->name('registration.adult');
+	Route::get('/adult', [RegistrationController::class, 'show'])->name('registration.adult');
 
 	Route::post('/sponsors', [RegistrationController::class, 'sponsors'])->name('sponsors.store');
 
-	Route::get('/child', function () {
-		return view('pages.child');
-	})->name('registration.child');
+	Route::get('/child', [RegistrationController::class, 'show'])->name('registration.child');
 
 	Route::post('/campers', [RegistrationController::class, 'campers'])->name('campers.store');
 });

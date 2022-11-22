@@ -16,7 +16,13 @@
 
 		<x-fields::input class="col-span-2" id="gcity" type="text" placeholder="City" label="City" value="{{ old('gcity') }}" required="1" />
 
-		<x-fields::select class="col-span-2" id="gstate" placeholder="State" label="State" :options="['TX']" value="{{ old('gstate') }}" required="1" />
+		@php
+		$states = [
+		'TX' => 'Texas',
+		];
+		@endphp
+
+		<x-fields::select class="col-span-2" id="gstate" placeholder="State" label="State" :options="$states" value="{{ old('gstate') }}" required="1" />
 
 		<x-fields::input class="col-span-2" id="gzip" type="text" placeholder="00000" slots="0" accepts="\d" label="Zip" value="{{ old('gzip') }}" required="1" />
 
@@ -40,8 +46,22 @@
 
 		<x-fields::input class="col-span-3" id="gcount" type="number" placeholder="How many are you expecting to bring?" label="Group Size" value="{{ old('gcount') }}" required="1" desc="Please include the total number of adult sponsors, child campers, and yourself." />
 
-		<x-fields::select class="col-span-3" id="marketing" placeholder="Please select one" label="How did you hear about us?" :options="['Returning Group', 'Direct Mail', 'Social Media', 'Web Search', 'Referral', 'Other']" value="{{ old('marketing') }}" required="1" />
+		@php
+		$mark_options = [
+		'Returning Group' => 'Returning Group',
+		'Direct Mail' => 'Direct Mail',
+		'Social Media' => 'Social Media',
+		'Web Search' => 'Web Search',
+		'Referral' => 'Referral',
+		'Other' => 'Other'
+		];
+		@endphp
 
-		<input type="submit" class="btn btn_primary" value="Send It">
+		<x-fields::select class="col-span-3" id="marketing" placeholder="Please select one" label="How did you hear about us?" :options="$mark_options" value="{{ old('marketing') }}" required="1" />
+
+		<div class="col-span-full">
+			<input type="submit" class="btn btn_primary mx-auto" value="Submit Registration Form">
+		</div>
+
 	</form>
 </div>

@@ -17,7 +17,7 @@ return new class extends Migration {
 			$table->string('street');
 			$table->string('city');
 			$table->string('state');
-			$table->string('zip');
+			$table->integer('zip');
 			$table->string('fname');
 			$table->string('lname');
 			$table->string('phone');
@@ -25,7 +25,7 @@ return new class extends Migration {
 			$table->integer('count');
 			$table->integer('deposit');
 			$table->text('marketing');
-			$table->integer('camp');
+			$table->tinyInteger('camp');
 			$table->integer('year');
 			$table->timestamps();
 		});

@@ -24,4 +24,8 @@ class Group extends Model {
 		'camp',
 		'year'
 	];
+
+	public function registrations() {
+		return $this->hasMany(Registration::class);
+	}
 }

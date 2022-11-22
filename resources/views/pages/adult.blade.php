@@ -39,7 +39,9 @@
 		</x-components::hero>
 
 		{{-- SPONSOR REG FORM --}}
-		<x-components::sponsors />
+		<x-components::registrations id="sponsor">
+			<x-forms::sponsors :groups="$groups" />
+		</x-components::registrations>
 
 	</x-slot>
 

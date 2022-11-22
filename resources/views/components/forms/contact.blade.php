@@ -13,7 +13,16 @@
 
 		<x-fields::input class="col-span-1" id="cemail" type="email" placeholder="Confirm your email address" label="Confirm Email" value="{{ old('cemail') }}" required="1" />
 
-		<x-fields::select class="col-span-2" id="subject" placeholder="Please select an option" label="What is the reason you are contacting us?" :options="['I have a question', 'I am interested in joining the leadership team', 'I have a story to share', 'Other...']" value="{{ old('subject') }}" required="1" />
+		@php
+		$subjects = [
+		'I have a question' => 'I have a question',
+		'I am interested in joining the leadership team' => 'I am interested in joining the leadership team',
+		'I have a story to share' => 'I have a story to share',
+		'Other...' => 'Other...'
+		];
+		@endphp
+
+		<x-fields::select class="col-span-2" id="subject" placeholder="Please select an option" label="What is the reason you are contacting us?" :options="$subjects" value="{{ old('subject') }}" required="1" />
 
 		<x-fields::textarea class="col-span-2" id="message" placeholder="What would you like to ask/say?" label="Message" value="{{ old('message') }}" required="1" />
 
