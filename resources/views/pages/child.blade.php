@@ -40,7 +40,7 @@
 
 		{{-- CAMPER REG FORM --}}
 		<x-components::registrations id="camper">
-			<x-forms::campers :groups="$groups" />
+			<x-forms::individuals :groups="$groups" type="camper" />
 		</x-components::registrations>
 
 	</x-slot>

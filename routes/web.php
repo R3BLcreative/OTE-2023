@@ -61,11 +61,11 @@ Route::prefix('registration')->group(function () {
 
 	Route::get('/adult', [RegistrationController::class, 'show'])->name('registration.adult');
 
-	Route::post('/sponsors', [RegistrationController::class, 'sponsors'])->name('sponsors.store');
+	Route::post('/sponsors', [RegistrationController::class, 'store'])->name('sponsors.store');
 
 	Route::get('/child', [RegistrationController::class, 'show'])->name('registration.child');
 
-	Route::post('/campers', [RegistrationController::class, 'campers'])->name('campers.store');
+	Route::post('/campers', [RegistrationController::class, 'store'])->name('campers.store');
 });
 
 // EMAIL PREVIEWS

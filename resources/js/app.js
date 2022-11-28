@@ -112,10 +112,20 @@ document.addEventListener('DOMContentLoaded', function () {
 	}
 
 	function toggleDeps(toggle, item, toggles, container) {
-		var otherDeps = container.querySelectorAll('input[data-deps]:checked');
+		var otherDeps = container.querySelectorAll('input[data-deps]');
+		var checkedDeps = container.querySelectorAll('input[data-deps]:checked');
 		var isExpanded = toggle.getAttribute('aria-expanded') === 'true';
 
-		if (isExpanded === true && otherDeps.length == 0) {
+		if (isExpanded === true && otherDeps.length == 1) {
+			toggles.forEach((tog) => tog.setAttribute('aria-expanded', 'false'));
+			item.setAttribute('aria-expanded', 'false');
+			item.style.maxHeight = '0px';
+			item.style.opacity = '0';
+		} else if (
+			isExpanded === true &&
+			otherDeps.length > 1 &&
+			checkedDeps.length == 0
+		) {
 			toggles.forEach((tog) => tog.setAttribute('aria-expanded', 'false'));
 			item.setAttribute('aria-expanded', 'false');
 			item.style.maxHeight = '0px';

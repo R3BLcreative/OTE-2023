@@ -60,7 +60,7 @@ class RegistrationController extends Controller {
 
 		// Store request in DB
 		$group = Group::create([
-			'group'			=> ucwords(strtolower($request->input('gname'))),
+			'group'			=> $request->input('gname'),
 			'street'		=> ucwords(strtolower($request->input('gstreet'))),
 			'city'			=> ucwords(strtolower($request->input('gcity'))),
 			'state'			=> strtoupper($request->input('gstate')),
@@ -88,55 +88,132 @@ class RegistrationController extends Controller {
 		return redirect(route('registration.group'))->with('message', $message);
 	}
 
-	public function sponsors(Request $request) {
+	public function store(Request $request) {
 		// Validate request
 		$request->validate(
 			[
-				'group'					=> 'required',
-				'fname'					=> 'required|string',
-				'lname'					=> 'required|string',
-				'bday'					=> 'required',
-				'shirt'					=> 'required',
-				'gender'				=> 'required',
-				'street'				=> 'required|string',
-				'city'					=> 'required|string',
-				'state'					=> 'required|string',
-				'zip'						=> 'required|integer|digits:5',
-				// Need to validate med-conditions
-				'efname'				=> 'required|string',
-				'elname'				=> 'required|string',
-				'ephone'				=> 'required',
-				'doctor'				=> 'required|string',
-				'docphone'			=> 'required',
-				'signature'			=> 'required|string'
+				'group'						=> 'required',
+				'fname'						=> 'required|string',
+				'lname'						=> 'required|string',
+				'bday'						=> 'required',
+				'grade'						=> 'required_if:type,camper',
+				'shirt'						=> 'required',
+				'gender'					=> 'required',
+				'street'					=> 'required|string',
+				'city'						=> 'required|string',
+				'state'						=> 'required|string',
+				'zip'							=> 'required|integer|digits:5',
+				'gfname'					=> 'required_if:type,camper',
+				'glname'					=> 'required_if:type,camper',
+				'grel'						=> 'required_if:type,camper',
+				'gemail'					=> 'required_if:type,camper|email:rfc,dns',
+				'gcemail'					=> 'required_if:type,camper|same:gemail',
+				'gcphone'					=> 'required_if:type,camper',
+				'dptdt'						=> 'prohibited_if:type,sponsor|required_if:immOptOut,null',
+				'polio'						=> 'prohibited_if:type,sponsor|required_if:immOptOut,null',
+				'mmr'							=> 'prohibited_if:type,sponsor|required_if:immOptOut,null',
+				'tb'							=> 'prohibited_if:type,sponsor|required_if:immOptOut,null',
+				'efname'					=> 'required|string',
+				'elname'					=> 'required|string',
+				'ephone'					=> 'required',
+				'doctor'					=> 'required|string',
+				'docphone'				=> 'required',
+				'signature'				=> 'required|string',
+				'conds-details'		=> 'required_with:conds_1,conds_2,conds_3,conds_4,conds_5,conds_6,conds_7,conds_8,conds_9,conds_10,conds_11'
 			],
 			[
-				'required'			=> 'This field is required.',
+				'required'					=> 'This field is required.',
+				'required_if'				=> 'This field is required.',
+				'required_unless'		=> 'This field is required.',
+				'required_without'	=> 'This field is required.',
+				'required_with'			=> 'This field is required if any of the items above are checked.',
+				'gcemail.same'			=> 'The email fields do not match.'
 			]
 		);
 
 		$bday = explode('-', $request->input('bday'));
-		$age = (date("md", date("U", mktime(0, 0, 0, $bday[0], $bday[1], $bday[2]))) > date("md")
-			? ((date("Y") - $bday[2]) - 1)
-			: (date("Y") - $bday[2]));
+		$dobs = mktime(0, 0, 0, $bday[0], $bday[1], $bday[2]);
+		$dob = date("Y-m-d", $dobs);
+		$today = date("Y-m-d");
+		$diff = date_diff(date_create($dob), date_create($today));
+		$age = $diff->format('%y');
+
+		if ($request->input('type') == 'camper') {
+			$optout = ($request->input('immOptOut')) ? true : false;
+			if ($optout === false) {
+				$dptdt = explode('-', $request->input('dptdt'));
+				$dptdt = mktime(0, 0, 0, $dptdt[0], $dptdt[1], $dptdt[2]);
+				$dptdt = date('Y-m-d', $dptdt);
+
+				$polio = explode('-', $request->input('polio'));
+				$polio = mktime(0, 0, 0, $polio[0], $polio[1], $polio[2]);
+				$polio = date('Y-m-d', $polio);
+
+				$mmr = explode('-', $request->input('mmr'));
+				$mmr = mktime(0, 0, 0, $mmr[0], $mmr[1], $mmr[2]);
+				$mmr = date('Y-m-d', $mmr);
+
+				$tb = explode('-', $request->input('tb'));
+				$tb = mktime(0, 0, 0, $tb[0], $tb[1], $tb[2]);
+				$tb = date('Y-m-d', $tb);
+			} else {
+				$dptdt = null;
+				$polio = null;
+				$mmr = null;
+				$tb = null;
+			}
+		} else {
+			$optout = null;
+			$dptdt = null;
+			$polio = null;
+			$mmr = null;
+			$tb = null;
+		}
+
+		$conditions = [
+			'conds_1'		=> $request->input('conds_1'),
+			'conds_2'		=> $request->input('conds_2'),
+			'conds_3'		=> $request->input('conds_3'),
+			'conds_4'		=> $request->input('conds_4'),
+			'conds_5'		=> $request->input('conds_5'),
+			'conds_6'		=> $request->input('conds_6'),
+			'conds_7'		=> $request->input('conds_7'),
+			'conds_8'		=> $request->input('conds_8'),
+			'conds_9'		=> $request->input('conds_9'),
+			'conds_10'	=> $request->input('conds_10'),
+			'conds_11'	=> $request->input('conds_11')
+		];
 
 		// Store request in DB
-		$group = Registration::create([
+		$reg = Registration::create([
 			'group'							=> $request->input('group'),
 			'type'							=> $request->input('type'),
 			'fname'							=> ucwords(strtolower($request->input('fname'))),
 			'lname'							=> ucwords(strtolower($request->input('lname'))),
-			'birthday'					=> date('Y-m-d', strtotime($request->input('bday'))),
+			'birthday'					=> date('Y-m-d', $dobs),
 			'age'								=> $age,
+			'grade'							=> $request->input('grade'),
 			'shirt'							=> $request->input('shirt'),
 			'gender'						=> $request->input('gender'),
 			'street'						=> ucwords(strtolower($request->input('street'))),
 			'city'							=> ucwords(strtolower($request->input('city'))),
 			'state'							=> strtoupper($request->input('state')),
 			'zip'								=> $request->input('zip'),
-			// need to input 'conditions'				=> $request->input(''),
-			// 'condition_details'	=> $request->input(''),
+			'parent_fname'			=> ucwords(strtolower($request->input('gfname'))),
+			'parent_lname'			=> ucwords(strtolower($request->input('glname'))),
+			'parent_rel'				=> strtolower($request->input('grel')),
+			'parent_email'			=> strtolower($request->input('gemail')),
+			'parent_cell'				=> $request->input('gcphone'),
+			'parent_home'				=> $request->input('ghphone'),
+			'parent_work'				=> $request->input('gwphone'),
+			'conditions'				=> json_encode($conditions),
+			'condition_details'	=> $request->input('conds-details'),
 			'allergies'					=> $request->input('allergies'),
+			'imm_optout'				=> $optout,
+			'imm_dptdt'					=> $dptdt,
+			'imm_polio'					=> $polio,
+			'imm_mmr'						=> $mmr,
+			'imm_tb'						=> $tb,
 			'medications'				=> $request->input('medications'),
 			'ice_fname'					=> ucwords(strtolower($request->input('efname'))),
 			'ice_lname'					=> ucwords(strtolower($request->input('elname'))),

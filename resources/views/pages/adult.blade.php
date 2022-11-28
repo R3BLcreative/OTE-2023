@@ -40,7 +40,7 @@
 
 		{{-- SPONSOR REG FORM --}}
 		<x-components::registrations id="sponsor">
-			<x-forms::sponsors :groups="$groups" />
+			<x-forms::individuals :groups="$groups" type="sponsor" />
 		</x-components::registrations>
 
 	</x-slot>

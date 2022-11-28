@@ -1,20 +1,34 @@
-@aware(['groups'])
+@aware(['groups', 'type'])
+
+@php
+if($type == 'sponsor') {
+$action = route('sponsors.store');
+$route = 'registration.adult';
+$title = 'Sponsor Details';
+$layout = 'col-span-2';
+}else{
+$action = route('campers.store');
+$route = 'registration.child';
+$title = 'Camper Details';
+$layout = 'col-span-3';
+}
+@endphp
 
 <x-forms::notifications :errors="$errors" />
 
 <div class="@if (session()->has('message')) !hidden @endif">
-	<form id="sponsors-reg-form" action="{{ route('sponsors.store') }}" class="grid mobile:grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-6 gap-6" method="post" enctype="multipart/form-data" novalidate>
+	<form id="sponsors-reg-form" action="{{ $action }}" class="grid mobile:grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-6 gap-6" method="post" enctype="multipart/form-data" novalidate>
 		@csrf
 		@method('post')
 
-		<x-fields::hidden id="route" value="registration.adult" />
-		<x-fields::hidden id="type" value="sponsor" />
+		<x-fields::hidden id="route" value="{{ $route }}" />
+		<x-fields::hidden id="type" value="{{ $type }}" />
 		<x-fields::hidden id="camp" value="1" />
 		<x-fields::hidden id="year" value="{{ env('OTE_CAMP_YEAR') }}" />
 
 		{{-- DETAILS --}}
 
-		<h2 class="h2 col-span-full !drop-shadow-none">Sponsor Details</h2>
+		<h2 class="h3 col-span-full text-3xl uppercase !drop-shadow-none">{{ $title }}</h2>
 
 		<x-fields::select class="col-span-2" id="group" placeholder="Select your group" label="Group Name" :options="$groups" value="{{ old('group') }}" required="1" desc="Select the group you are attending camp with. If you don't see your group, please contact your group leader." />
 
@@ -22,7 +36,19 @@
 
 		<x-fields::input class="col-span-2" id="lname" type="text" placeholder="Doe" label="Last Name" value="{{ old('lname') }}" required="1" />
 
-		<x-fields::input class="col-span-2" id="bday" type="text" placeholder="__-__-____" slots="_" accepts="\d" label="Birthday" value="{{ old('bday') }}" required="1" desc="MM-DD-YYYY" />
+		<x-fields::input class="{{ $layout }}" id="bday" type="text" placeholder="__-__-____" slots="_" accepts="\d" label="Birthday" value="{{ old('bday') }}" required="1" desc="MM-DD-YYYY" />
+
+		@if($type == 'camper')
+		@php
+		$grades = [
+		'3' => 'Completed 3rd',
+		'4' => 'Completed 4th',
+		'5' => 'Completed 5th',
+		'6' => 'Completed 6th',
+		];
+		@endphp
+		<x-fields::select class="col-span-3" id="grade" placeholder="Select one" label="Completed Grade" :options="$grades" value="{{ old('grade') }}" required="1" />
+		@endif
 
 		@php
 		$sizes = [
@@ -45,7 +71,7 @@
 		]
 		];
 		@endphp
-		<x-fields::select class="col-span-2" id="shirt" placeholder="Select one" label="Shirt Size" :options="$sizes" value="{{ old('shirt') }}" required="1" />
+		<x-fields::select class="{{ $layout }}" id="shirt" placeholder="Select one" label="Shirt Size" :options="$sizes" value="{{ old('shirt') }}" required="1" />
 
 		@php
 		$genders = [
@@ -53,9 +79,9 @@
 		'female' => 'Female'
 		];
 		@endphp
-		<x-fields::select class="col-span-2" id="gender" placeholder="Select one" label="Gender" :options="$genders" value="{{ old('gender') }}" required="1" />
+		<x-fields::select class="{{ $layout }}" id="gender" placeholder="Select one" label="Gender" :options="$genders" value="{{ old('gender') }}" required="1" />
 
-		<x-fields::input class="col-span-full" id="street" type="text" placeholder="12345 Some Street #456" label="Mailing Address" value="{{ old('street') }}" required="1" />
+		<x-fields::input class="col-span-full" id="street" type="text" placeholder="12345 Some Street #456" label="Home Address" value="{{ old('street') }}" required="1" />
 
 		<x-fields::input class="col-span-2" id="city" type="text" placeholder="City" label="City" value="{{ old('city') }}" required="1" />
 
@@ -69,11 +95,37 @@
 
 		<x-fields::input class="col-span-2" id="zip" type="text" placeholder="00000" slots="0" accepts="\d" label="Zip" value="{{ old('zip') }}" required="1" />
 
+		@if($type == 'camper')
+
+		{{-- GAURDIAN --}}
+
+		<hr class="my-6 col-span-full">
+
+		<h2 class="h3 col-span-full text-3xl uppercase !drop-shadow-none">Parent/Gaurdian Details</h2>
+
+		<x-fields::input class="col-span-2" id="gfname" type="text" placeholder="John" label="First Name" value="{{ old('gfname') }}" required="1" />
+
+		<x-fields::input class="col-span-2" id="glname" type="text" placeholder="Doe" label="Last Name" value="{{ old('glname') }}" required="1" />
+
+		<x-fields::input class="col-span-2" id="grel" type="text" placeholder="Dad, Mom, etc." label="Relationship" value="{{ old('grel') }}" required="1" desc="How is the person listed here related to the camper?" />
+
+		<x-fields::input class="col-span-3" id="gemail" type="email" placeholder="john@email.com" label="Email" value="{{ old('gemail') }}" required="1" />
+
+		<x-fields::input class="col-span-3" id="gcemail" type="email" placeholder="john@email.com" label="Confirm Email" value="{{ old('gcemail') }}" required="1" />
+
+		<x-fields::input class="col-span-2" id="gcphone" type="text" placeholder="(___) ___-____" slots="_" accepts="\d" label="Cell Phone" value="{{ old('gcphone') }}" required="1" />
+
+		<x-fields::input class="col-span-2" id="ghphone" type="text" placeholder="(___) ___-____" slots="_" accepts="\d" label="Home Phone" value="{{ old('ghphone') }}" />
+
+		<x-fields::input class="col-span-2" id="gwphone" type="text" placeholder="(___) ___-____" slots="_" accepts="\d" label="Work Phone" value="{{ old('gwphone') }}" />
+
+		@endif
+
 		{{-- HISTORY --}}
 
 		<hr class="my-6 col-span-full">
 
-		<h2 class="h2 col-span-full !drop-shadow-none">Medical History</h2>
+		<h2 class="h3 col-span-full text-3xl uppercase !drop-shadow-none">Medical Conditions</h2>
 
 		@php
 		$conditions = [
@@ -90,7 +142,7 @@
 		'Other' => 'Other'
 		];
 		@endphp
-		<x-fields::check class="col-span-full" id="med-conditions" label="Medical Conditions" :options="$conditions" cols="3" desc="Check any and all conditions that this child/adult currently has or has had in the past and then explain specifically:" details="1" detailsMax="500" />
+		<x-fields::check class="col-span-full" id="conds" label="Medical Conditions" :options="$conditions" cols="3" desc="Check any and all conditions that this child/adult currently has or has had in the past and then explain specifically:" details="1" detailsMax="500" />
 
 		<div class="col-span-full bg-yellow-400 rounded-lg shadow-sm p-6 text-lg">
 			<p><strong>VERY IMPORTANT!</strong> &mdash; Texas state law requires that certain information be disclosed. Your cooperation as leaders and parents will aid in that. This form <strong>must have allergy and current immunization</strong> information listed with exact dates for anyone under 18. This may be an inconvenience but state law <strong><u>requires guests to be sent home immediately</u></strong> that do not give complete information.</p>
@@ -98,11 +150,48 @@
 
 		<x-fields::textarea class="col-span-full" id="allergies" placeholder="List any and all allergies here..." label="Allergies" value="{{ old('allergies') }}" max="500" desc="Please list and explain any allergies in the field below." />
 
+		@if($type == 'camper')
+
+		{{-- IMMUNIZATIONS --}}
+
+		<hr class="my-6 col-span-full">
+
+		<h2 class="h3 col-span-full text-3xl uppercase !drop-shadow-none">Immunizations</h2>
+
+		<div class="col-span-full grid mobile:grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-6 gap-6" data-hasDeps="1">
+
+			<div class="col-span-full flex flex-row items-center justify-start gap-4">
+				<input type="checkbox" value="immOptOut" id="immOptOut" name="immOptOut" class="cursor-pointer" @if(old('immOptOut'))aria-expanded="false" @else aria-expanded="true" @endif aria-controls="immWrap" data-deps="" @if(old('immOptOut'))checked="checked" @endif>
+				<label for="immOptOut" class="cursor-pointer">Check this box if you have chosen to not have your child immunized.</label>
+			</div>
+
+			@php
+			if(old('immOptOut')) {
+			$showImm = false;
+			}else{
+			$showImm = true;
+			}
+			@endphp
+
+			<div id="immWrap" class="col-span-full grid mobile:grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-6 gap-6 @if($showImm) max-h-[500px] opacity-1 @else max-h-0 opacity-0 @endif transition-all ease-in-out duration-500 overflow-hidden" @if(old('immOptOut'))aria-expanded="false" @else aria-expanded="true" @endif>
+				<x-fields::input class="col-span-3" id="dptdt" type="text" placeholder="__-__-____" slots="_" accepts="\d" label="DPT/DT" value="{{ old('dptdt') }}" required="1" desc="MM-DD-YYYY" />
+
+				<x-fields::input class="col-span-3" id="polio" type="text" placeholder="__-__-____" slots="_" accepts="\d" label="Polio" value="{{ old('polio') }}" required="1" desc="MM-DD-YYYY" />
+
+				<x-fields::input class="col-span-3" id="mmr" type="text" placeholder="__-__-____" slots="_" accepts="\d" label="MMR" value="{{ old('mmr') }}" required="1" desc="MM-DD-YYYY" />
+
+				<x-fields::input class="col-span-3" id="tb" type="text" placeholder="__-__-____" slots="_" accepts="\d" label="TB" value="{{ old('tb') }}" required="1" desc="MM-DD-YYYY" />
+			</div>
+
+		</div>
+
+		@endif
+
 		{{-- MEDS --}}
 
 		<hr class="my-6 col-span-full">
 
-		<h2 class="h2 col-span-full !drop-shadow-none">Medications</h2>
+		<h2 class="h3 col-span-full text-3xl uppercase !drop-shadow-none">Medications</h2>
 
 		<x-fields::textarea class="col-span-full" id="medications" placeholder="List any and all medications and instructions here..." label="Medications" value="{{ old('medications') }}" max="500" desc="Please list any medications and instructions in the field below." />
 
@@ -114,7 +203,7 @@
 
 		<hr class="my-6 col-span-full">
 
-		<h2 class="h2 col-span-full !drop-shadow-none">Emergency Details</h2>
+		<h2 class="h3 col-span-full text-3xl uppercase !drop-shadow-none">Emergency Details</h2>
 
 		<x-fields::input class="col-span-2" id="efname" type="text" placeholder="John" label="Emergency Contact" value="{{ old('efname') }}" required="1" desc="First Name" />
 
@@ -140,7 +229,7 @@
 		@endphp
 		<x-fields::textarea rows="5" class="col-span-3" id="terms" placeholder="" label="Acknowledgements" value="{{ $terms }}" disabled="1" desc="Please read the following statment in full before signing." />
 
-		<x-fields::input class="col-span-3" id="signature" type="text" placeholder="John Doe" label="Emergency Authorization Signature" value="{{ old('signature') }}" desc="Please type your full name above. By typing your name you are accepting the acknowledgements outlined in the previous field." required="1" />
+		<x-fields::input class="col-span-3" id="signature" type="text" placeholder="John Doe" label="Emergency Authorization Signature" value="{{ old('signature') }}" desc="Please type your full name above. By typing your name you are accepting the acknowledgements outlined in the Acknowledgments field." required="1" />
 
 		<div class="col-span-full">
 			<input type="submit" class="btn btn_primary mx-auto" value="Submit Registration Form">
