@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\App;
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\Registration;
 use App\Models\Group;
 use App\Models\ContactMsg;
@@ -13,8 +15,6 @@ use App\Mail\ContactReceived;
 use App\Mail\ContactNotify;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\FallbackController;
-use App\Http\Controllers\Controller;
-use App\Http\Controllers\ContactController;
 
 // COMING SOON
 Route::get('/coming-soon', function () {
@@ -68,6 +68,21 @@ Route::prefix('registration')->group(function () {
 	Route::get('/child', [RegistrationController::class, 'show'])->name('registration.child');
 
 	Route::post('/campers', [RegistrationController::class, 'store'])->name('campers.store');
+});
+
+// PDF PREVIEWS
+Route::prefix('pdf')->group(function () {
+	Route::get('/', function () {
+		$reg = Registration::where(['id' => 3])->first();
+		$pdf = Pdf::loadView('pdf.form', ['reg' => $reg]);
+		return $pdf->stream();
+	});
+
+	Route::get('/{id}', function ($id) {
+		$reg = Registration::where(['id' => $id])->first();
+		$pdf = Pdf::loadView('pdf.form', ['reg' => $reg]);
+		return $pdf->stream();
+	})->name('pdf.form');
 });
 
 // EMAIL PREVIEWS
