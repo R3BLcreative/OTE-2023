@@ -9,7 +9,7 @@ class Registration extends Model {
 	use HasFactory;
 
 	protected $fillable = [
-		'group',
+		'group_id',
 		'fname',
 		'lname',
 		'birthday',
@@ -54,6 +54,6 @@ class Registration extends Model {
 	];
 
 	public function group() {
-		return $this->hasOne(Group::class);
+		return $this->belongsTo(Group::class);
 	}
 }

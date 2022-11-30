@@ -1,10 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Registration;
 use App\Models\Group;
 use App\Models\ContactMsg;
-use App\Mail\SponsorRegLeaderNotify;
-use App\Mail\SponsorRegAdminNotify;
+use App\Mail\RegUserNotify;
+use App\Mail\RegLeaderNotify;
+use App\Mail\RegAdminNotify;
 use App\Mail\GroupRegLeaderNotify;
 use App\Mail\GroupRegAdminNotify;
 use App\Mail\ContactReceived;
@@ -89,6 +91,21 @@ Route::prefix('emails')->group(function () {
 		$group = Group::find(1);
 		return new GroupRegLeaderNotify($group);
 	})->name('emails.reg.group.leader');
+
+	Route::get('/registration/admin', function () {
+		$reg = Registration::where(['type' => 'camper'])->first();
+		return new RegAdminNotify($reg);
+	})->name('emails.reg.admin');
+
+	Route::get('/registration/leader', function () {
+		$reg = Registration::where(['type' => 'camper'])->first();
+		return new RegLeaderNotify($reg);
+	})->name('emails.reg.leader');
+
+	Route::get('/registration/user', function () {
+		$reg = Registration::where(['type' => 'camper'])->first();
+		return new RegUserNotify($reg);
+	})->name('emails.reg.user');
 });
 
 // FALLBACK

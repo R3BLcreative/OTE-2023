@@ -13,10 +13,10 @@ return new class extends Migration {
 	public function up() {
 		Schema::create('registrations', function (Blueprint $table) {
 			$table->id();
-			$table->foreignId('group')->constrained('groups');
+			$table->foreignId('group_id')->constrained('groups');
 			$table->string('fname');
 			$table->string('lname');
-			$table->date('birthday');
+			$table->bigInteger('birthday');
 			$table->tinyInteger('age');
 			$table->tinyInteger('grade')->nullable();
 			$table->string('shirt');
@@ -36,10 +36,10 @@ return new class extends Migration {
 			$table->text('condition_details')->nullable();
 			$table->text('allergies')->nullable();
 			$table->boolean('imm_optout')->default(false);
-			$table->date('imm_dptdt')->nullable();
-			$table->date('imm_polio')->nullable();
-			$table->date('imm_mmr')->nullable();
-			$table->date('imm_tb')->nullable();
+			$table->bigInteger('imm_dptdt')->nullable();
+			$table->bigInteger('imm_polio')->nullable();
+			$table->bigInteger('imm_mmr')->nullable();
+			$table->bigInteger('imm_tb')->nullable();
 			$table->text('medications')->nullable();
 			$table->string('ice_fname');
 			$table->string('ice_lname');

@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 use App\Models\Registration;
 use App\Models\Group;
+use App\Mail\RegUserNotify;
+use App\Mail\RegLeaderNotify;
+use App\Mail\RegAdminNotify;
 use App\Mail\GroupRegLeaderNotify;
 use App\Mail\GroupRegAdminNotify;
 
@@ -143,19 +146,15 @@ class RegistrationController extends Controller {
 			if ($optout === false) {
 				$dptdt = explode('-', $request->input('dptdt'));
 				$dptdt = mktime(0, 0, 0, $dptdt[0], $dptdt[1], $dptdt[2]);
-				$dptdt = date('Y-m-d', $dptdt);
 
 				$polio = explode('-', $request->input('polio'));
 				$polio = mktime(0, 0, 0, $polio[0], $polio[1], $polio[2]);
-				$polio = date('Y-m-d', $polio);
 
 				$mmr = explode('-', $request->input('mmr'));
 				$mmr = mktime(0, 0, 0, $mmr[0], $mmr[1], $mmr[2]);
-				$mmr = date('Y-m-d', $mmr);
 
 				$tb = explode('-', $request->input('tb'));
 				$tb = mktime(0, 0, 0, $tb[0], $tb[1], $tb[2]);
-				$tb = date('Y-m-d', $tb);
 			} else {
 				$dptdt = null;
 				$polio = null;
@@ -163,7 +162,7 @@ class RegistrationController extends Controller {
 				$tb = null;
 			}
 		} else {
-			$optout = null;
+			$optout = false;
 			$dptdt = null;
 			$polio = null;
 			$mmr = null;
@@ -184,13 +183,15 @@ class RegistrationController extends Controller {
 			'conds_11'	=> $request->input('conds_11')
 		];
 
+		$conditions = array_filter($conditions);
+
 		// Store request in DB
 		$reg = Registration::create([
-			'group'							=> $request->input('group'),
+			'group_id'					=> $request->input('group'),
 			'type'							=> $request->input('type'),
 			'fname'							=> ucwords(strtolower($request->input('fname'))),
 			'lname'							=> ucwords(strtolower($request->input('lname'))),
-			'birthday'					=> date('Y-m-d', $dobs),
+			'birthday'					=> $dobs,
 			'age'								=> $age,
 			'grade'							=> $request->input('grade'),
 			'shirt'							=> $request->input('shirt'),
@@ -230,8 +231,19 @@ class RegistrationController extends Controller {
 			'year'							=> $request->input('year')
 		]);
 
+		$reg = $reg->fresh();
+
+		// Send notification email to admin
+		Mail::to('admin@otecamp.com')->bcc('jcook@r3blcreative.com')->send(new RegAdminNotify($reg));
+
+		// Send notification email to user
+		Mail::to($reg->email)->bcc('jcook@r3blcreative.com')->send(new RegUserNotify($reg));
+
+		// Send notification email to leader
+		Mail::to($reg->group->email)->bcc('jcook@r3blcreative.com')->send(new RegLeaderNotify($reg));
+
 		// Return with success message
-		$message = "SUCCESS! We have recieved your registration. Your group leader has all the details you need for camp. Please be sure to let them know that you have completed your registration. This is your confirmation that you have registered as there will not be any emails or correspondence to come.";
+		$message = "SUCCESS! We have recieved your registration. Your group leader has all the details you need for camp. A copy of your registration has been emailed to you for your reference. Another copy has been sent to your group leader. If you have nay questions please direct them to your group leader. Thanks for being the best part of Over The Edge! We can't wait to see you at camp.";
 
 		return redirect(route($request->input('route')))->with('message', $message);
 	}
