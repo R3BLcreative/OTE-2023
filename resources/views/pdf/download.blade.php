@@ -76,6 +76,8 @@
 	}
 </style>
 
+@foreach($regs as $reg)
+
 @php
 $sig = rand(1,4);
 @endphp
@@ -276,3 +278,7 @@ $sig = rand(1,4);
 		</tr>
 	</tbody>
 </table>
+
+<div class="page-break"></div>
+
+@endforeach

@@ -7,5 +7,17 @@
     },
     "sig4": {
         "normal": "sig4_normal_bc324bbfb44c0f380dc64ca0b3fb4ce3"
+    },
+    "seaweed script": {
+        "normal": "seaweed_script_normal_0336bac6d42ab7967098cc7f0e228a96"
+    },
+    "la belle aurore": {
+        "normal": "la_belle_aurore_normal_1728fecc380d33656916b6f58e445019"
+    },
+    "ms madi": {
+        "normal": "ms_madi_normal_f897ba303116a67275c7e0696bd78d29"
+    },
+    "parisienne": {
+        "normal": "parisienne_normal_99896e3b66df212b6c9df3c433aab683"
     }
 }

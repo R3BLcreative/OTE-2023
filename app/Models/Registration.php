@@ -50,7 +50,8 @@ class Registration extends Model {
 		'esign',
 		'camp',
 		'year',
-		'type'
+		'type',
+		'ATID'
 	];
 
 	public function group() {

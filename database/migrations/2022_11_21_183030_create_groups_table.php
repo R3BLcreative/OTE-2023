@@ -27,6 +27,7 @@ return new class extends Migration {
 			$table->text('marketing');
 			$table->tinyInteger('camp');
 			$table->integer('year');
+			$table->string('ATID')->nullable();
 			$table->timestamps();
 		});
 	}

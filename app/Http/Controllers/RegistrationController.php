@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 use App\Models\Registration;
@@ -11,6 +12,7 @@ use App\Mail\RegLeaderNotify;
 use App\Mail\RegAdminNotify;
 use App\Mail\GroupRegLeaderNotify;
 use App\Mail\GroupRegAdminNotify;
+use Airtable;
 
 class RegistrationController extends Controller {
 	public function show(Request $request) {
@@ -78,6 +80,30 @@ class RegistrationController extends Controller {
 			'camp'			=> $request->input('camp'),
 			'year'			=> $request->input('year')
 		]);
+
+		$group = $group->fresh();
+
+		// Store request in AirTable
+		$airtable = Airtable::table('groups')->create([
+			'Church_Name'				=> $request->input('gname'),
+			'Church_Address'		=> ucwords(strtolower($request->input('gstreet'))),
+			'Church_City'				=> ucwords(strtolower($request->input('gcity'))),
+			'Church_State'			=> strtoupper($request->input('gstate')),
+			'Church_Zip'				=> $request->input('gzip'),
+			'Contact_First'			=> ucwords(strtolower($request->input('fname'))),
+			'Contact_Last'			=> ucwords(strtolower($request->input('lname'))),
+			'Contact_Phone'			=> $request->input('phone'),
+			'Contact_Email'			=> strtolower($request->input('email')),
+			'Expected'					=> $request->input('gcount'),
+			'Marketing'					=> $request->input('marketing'),
+			'Camp'							=> [env('AIRTABLE_CAMP_ID')]
+		]);
+
+		// Update DB record with Airtable Group_ID
+		$atArray = $airtable->toArray();
+		$group->ATID = $atArray['id'];
+		$group->save();
+
 
 		// Send notification email to admin
 		Mail::to('admin@otecamp.com')->bcc('jcook@r3blcreative.com')->send(new GroupRegAdminNotify($group));
@@ -232,6 +258,23 @@ class RegistrationController extends Controller {
 		]);
 
 		$reg = $reg->fresh();
+
+		// Store request in AirTable
+		$airtable = Airtable::table('regs')->create([
+			'Group'						=> [$reg->group->ATID],
+			'Type'							=> ucfirst($request->input('type')),
+			'First_Name'				=> ucwords(strtolower($request->input('fname'))),
+			'Last_Name'					=> ucwords(strtolower($request->input('lname'))),
+			'Grade'							=> $request->input('grade'),
+			'Shirt'							=> $request->input('shirt'),
+			'Gender'						=> ucfirst($request->input('gender')),
+			'Reg_Form'					=> URL::to('/pdf/view/' . $reg->id)
+		]);
+
+		// Update DB record with Airtable REG_ID
+		$atArray = $airtable->toArray();
+		$reg->ATID = $atArray['id'];
+		$reg->save();
 
 		// Send notification email to admin
 		Mail::to('admin@otecamp.com')->bcc('jcook@r3blcreative.com')->send(new RegAdminNotify($reg));

@@ -15,6 +15,7 @@ use App\Mail\ContactReceived;
 use App\Mail\ContactNotify;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\FallbackController;
+use App\Http\Controllers\ContactController;
 
 // COMING SOON
 Route::get('/coming-soon', function () {
@@ -73,12 +74,18 @@ Route::prefix('registration')->group(function () {
 // PDF PREVIEWS
 Route::prefix('pdf')->group(function () {
 	Route::get('/', function () {
-		$reg = Registration::where(['id' => 3])->first();
+		$reg = Registration::where(['id' => 1])->first();
 		$pdf = Pdf::loadView('pdf.form', ['reg' => $reg]);
 		return $pdf->stream();
-	});
+	})->name('pdf.test');
 
-	Route::get('/{id}', function ($id) {
+	Route::get('/download', function () {
+		$regs = Registration::orderBy('group_id')->orderByDesc('type')->get();
+		$pdf = Pdf::loadView('pdf.download', ['regs' => $regs]);
+		return $pdf->download('Camp_' . env('OTE_CAMP_YEAR') . '.pdf');
+	})->name('pdf.download');
+
+	Route::get('/view/{id}', function ($id) {
 		$reg = Registration::where(['id' => $id])->first();
 		$pdf = Pdf::loadView('pdf.form', ['reg' => $reg]);
 		return $pdf->stream();

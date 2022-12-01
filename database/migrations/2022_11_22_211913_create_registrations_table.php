@@ -55,6 +55,7 @@ return new class extends Migration {
 			$table->tinyInteger('camp');
 			$table->integer('year');
 			$table->string('type');
+			$table->string('ATID')->nullable();
 			$table->timestamps();
 		});
 	}

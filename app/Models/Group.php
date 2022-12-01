@@ -22,7 +22,8 @@ class Group extends Model {
 		'deposit',
 		'marketing',
 		'camp',
-		'year'
+		'year',
+		'ATID'
 	];
 
 	public function registrations() {
