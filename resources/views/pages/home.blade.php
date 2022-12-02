@@ -97,7 +97,7 @@
 
 				{{-- MAIN --}}
 				<div class="mobile:col-span-full tablet:col-span-4 laptop:col-span-4 text-center">
-					<x-components::guest img="spkr_DaveBenefield.jpg" name="Dave Benefield" title="Session Speaker" border="border-white" :socials="[
+					<x-components::guest img="spkr_DaveBenefield.jpg" name="Chalk Artist Dave Benefield" title="Special Event Speaker" border="border-white" :socials="[
 						'fa-facebook' => [
 							'https://www.facebook.com/dave.benefield.9',
 							'Follow Dave on Facebook'
