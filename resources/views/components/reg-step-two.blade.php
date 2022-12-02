@@ -7,7 +7,7 @@
 		</div>
 
 		<div class="mobile:col-span-full tablet:col-span-4 laptop:col-span-6 flex flex-col gap-8">
-			<p class="font-semibold">To complete your group registration and ensure your registration is locked in, you will need to send in your deposit <strong>({{ env('OTE_DEPOSIT') }}/person)</strong> to the address listed. <strong>This deposit is non-refundable upon cancellation and will be applied to your final balance for camp.</strong></p>
+			<p class="font-semibold">To complete your group registration and ensure your registration is locked in, you will need to send in your deposit <strong>({{ setting('camp_deposit') }}/person)</strong> to the address listed. <strong>This deposit is non-refundable upon cancellation and will be applied to your final balance for camp.</strong></p>
 
 			<p class="font-semibold">Deposit amount and additional details will be included in the email you receive after you register your group in step 1.</p>
 

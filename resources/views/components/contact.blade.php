@@ -1,7 +1,7 @@
 <section id="contact" class="bg-white">
 	<row>
 		<div class="two flex flex-col gap-6">
-			<h2 class="h3 text-4xl text-primary-200">Still have questions?</h2>
+			<h2 class="h3 text-4xl">Still have questions?</h2>
 
 			<img src="{{ asset('images/questions_contact.jpg') }}" alt="An image of an open envelope with a piece of stationery with a heart on it being pulled out by someone" width="800" height="327" class="rounded shadow">
 

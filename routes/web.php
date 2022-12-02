@@ -27,11 +27,6 @@ Route::get('/', function () {
 	return view('pages.home');
 })->name('home');
 
-// CAMP
-Route::get('/camp', function () {
-	return view('pages.camp');
-})->name('camp');
-
 // RESOURCES
 Route::get('/resources', function () {
 	return view('pages.resources');

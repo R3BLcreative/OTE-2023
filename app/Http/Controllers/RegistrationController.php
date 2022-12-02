@@ -17,7 +17,7 @@ use Airtable;
 class RegistrationController extends Controller {
 	public function show(Request $request) {
 		$groups = Group::select('id', 'group')
-			->where('year', env('OTE_CAMP_YEAR'))
+			->where('year', setting('camp_year'))
 			->orderBy('group', 'asc')
 			->get()->toArray();
 
@@ -106,13 +106,13 @@ class RegistrationController extends Controller {
 
 
 		// Send notification email to admin
-		Mail::to('admin@otecamp.com')->bcc('jcook@r3blcreative.com')->send(new GroupRegAdminNotify($group));
+		Mail::to('admin@otecamp.com')->send(new GroupRegAdminNotify($group));
 
 		// Send notification email to user
-		Mail::to($group->email)->bcc('jcook@r3blcreative.com')->send(new GroupRegLeaderNotify($group));
+		Mail::to($group->email)->send(new GroupRegLeaderNotify($group));
 
 		// Return with success message
-		$message = "SUCCESS! We have recieved your group's registration and one of our registration admins will contact you within a week to finalize your group's registration and set up deposit payment. A deposit of " . env('OTE_DEPOSIT') . " per camper is due to complete your initial registration. The total deposit amount is based off the expected number of people you entered in the group size field. Final payment will be based on the actual number of people who registered. This information and other additional details will be emailed to you shortly.";
+		$message = "SUCCESS! We have recieved your group's registration and one of our registration admins will contact you within a week to finalize your group's registration and set up deposit payment. A deposit of " . setting('camp_deposit') . " per camper is due to complete your initial registration. The total deposit amount is based off the expected number of people you entered in the group size field. Final payment will be based on the actual number of people who registered. This information and other additional details will be emailed to you shortly.";
 
 		return redirect(route('registration.group'))->with('message', $message);
 	}
@@ -277,13 +277,13 @@ class RegistrationController extends Controller {
 		$reg->save();
 
 		// Send notification email to admin
-		Mail::to('admin@otecamp.com')->bcc('jcook@r3blcreative.com')->send(new RegAdminNotify($reg));
+		Mail::to('admin@otecamp.com')->send(new RegAdminNotify($reg));
 
 		// Send notification email to user
-		Mail::to($reg->email)->bcc('jcook@r3blcreative.com')->send(new RegUserNotify($reg));
+		Mail::to($reg->email)->send(new RegUserNotify($reg));
 
 		// Send notification email to leader
-		Mail::to($reg->group->email)->bcc('jcook@r3blcreative.com')->send(new RegLeaderNotify($reg));
+		Mail::to($reg->group->email)->send(new RegLeaderNotify($reg));
 
 		// Return with success message
 		$message = "SUCCESS! We have recieved your registration. Your group leader has all the details you need for camp. A copy of your registration has been emailed to you for your reference. Another copy has been sent to your group leader. If you have nay questions please direct them to your group leader. Thanks for being the best part of Over The Edge! We can't wait to see you at camp.";

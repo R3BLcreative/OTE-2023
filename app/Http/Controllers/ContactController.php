@@ -38,10 +38,10 @@ class ContactController extends Controller {
 		]);
 
 		// Send notification email to admin
-		Mail::to('admin@otecamp.com')->bcc('jcook@r3blcreative.com')->send(new ContactNotify($msg));
+		Mail::to('admin@otecamp.com')->send(new ContactNotify($msg));
 
 		// Send notification email to user
-		Mail::to($msg->email)->bcc('jcook@r3blcreative.com')->send(new ContactReceived($msg));
+		Mail::to($msg->email)->send(new ContactReceived($msg));
 
 		// Return with success message
 		$message = "SUCCESS! We have recieved your message and one of our admins will be getting back to you in 24-48 hours. Check your inbox for a copy of the message you just sent.";

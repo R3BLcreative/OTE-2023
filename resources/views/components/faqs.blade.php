@@ -16,7 +16,7 @@
 				How much is camp and is there a deposit?
 			</x-slot>
 			<x-slot name="answer">
-				<p>The total cost per camper (adult & child) is {{ env('OTE_COST') }}. There is a {{ env('OTE_DEPOSIT') }} per camper deposit due to lock in your spots at camp. The deposit will count towards your total registration cost.</p>
+				<p>The total cost per camper (adult & child) is {{ setting('camp_cost') }}. There is a {{ setting('camp_deposit') }} per camper deposit due to lock in your spots at camp. The deposit will count towards your total registration cost.</p>
 			</x-slot>
 		</x-components::faq-item>
 

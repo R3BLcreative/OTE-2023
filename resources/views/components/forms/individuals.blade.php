@@ -13,10 +13,10 @@ $title = 'Camper Details';
 $layout = 'mobile:col-span-full tablet:col-span-3';
 }
 
-$regOpen = env('OTE_REG_OPEN');
+$regOpen = setting('camp_reg_open');
 $regOpen = explode('/', $regOpen);
 $regOpen = mktime(0,0,0,$regOpen[0],$regOpen[1],$regOpen[2]);
-$regClose = env('OTE_REG_CLOSE');
+$regClose = setting('camp_reg_close');
 $regClose = explode('/', $regClose);
 $regClose = mktime(0,0,0,$regClose[0],$regClose[1],$regClose[2]);
 $now = strtotime('now');
@@ -34,7 +34,7 @@ $now = strtotime('now');
 		<x-fields::hidden id="route" value="{{ $route }}" />
 		<x-fields::hidden id="type" value="{{ $type }}" />
 		<x-fields::hidden id="camp" value="1" />
-		<x-fields::hidden id="year" value="{{ env('OTE_CAMP_YEAR') }}" />
+		<x-fields::hidden id="year" value="{{ setting('camp_year') }}" />
 
 		{{-- DETAILS --}}
 
@@ -97,7 +97,57 @@ $now = strtotime('now');
 
 		@php
 		$states = [
+		'AL' => 'Alabama',
+		'AK' => 'Alaska',
+		'AZ' => 'Arizona',
+		'AR' => 'Arkansas',
+		'CA' => 'California',
+		'CO' => 'Colorado',
+		'CT' => 'Connecticut',
+		'DE' => 'Delaware',
+		'DC' => 'District Of Columbia',
+		'FL' => 'Florida',
+		'GA' => 'Georgia',
+		'HI' => 'Hawaii',
+		'ID' => 'Idaho',
+		'IL' => 'Illinois',
+		'IN' => 'Indiana',
+		'IA' => 'Iowa',
+		'KS' => 'Kansas',
+		'KY' => 'Kentucky',
+		'LA' => 'Louisiana',
+		'ME' => 'Maine',
+		'MD' => 'Maryland',
+		'MA' => 'Massachusetts',
+		'MI' => 'Michigan',
+		'MN' => 'Minnesota',
+		'MS' => 'Mississippi',
+		'MO' => 'Missouri',
+		'MT' => 'Montana',
+		'NE' => 'Nebraska',
+		'NV' => 'Nevada',
+		'NH' => 'New Hampshire',
+		'NJ' => 'New Jersey',
+		'NM' => 'New Mexico',
+		'NY' => 'New York',
+		'NC' => 'North Carolina',
+		'ND' => 'North Dakota',
+		'OH' => 'Ohio',
+		'OK' => 'Oklahoma',
+		'OR' => 'Oregon',
+		'PA' => 'Pennsylvania',
+		'RI' => 'Rhode Island',
+		'SC' => 'South Carolina',
+		'SD' => 'South Dakota',
+		'TN' => 'Tennessee',
 		'TX' => 'Texas',
+		'UT' => 'Utah',
+		'VT' => 'Vermont',
+		'VA' => 'Virginia',
+		'WA' => 'Washington',
+		'WV' => 'West Virginia',
+		'WI' => 'Wisconsin',
+		'WY' => 'Wyoming',
 		];
 		@endphp
 

@@ -1,8 +1,8 @@
 @php
-$regOpen = env('OTE_REG_OPEN');
+$regOpen = setting('camp_reg_open');
 $regOpen = explode('/', $regOpen);
 $regOpen = mktime(0,0,0,$regOpen[0],$regOpen[1],$regOpen[2]);
-$regClose = env('OTE_REG_CLOSE');
+$regClose = setting('camp_reg_close');
 $regClose = explode('/', $regClose);
 $regClose = mktime(0,0,0,$regClose[0],$regClose[1],$regClose[2]);
 $now = strtotime('now');
