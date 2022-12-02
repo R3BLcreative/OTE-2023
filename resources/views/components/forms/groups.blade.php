@@ -1,4 +1,17 @@
-<x-forms::notifications :errors="$errors" />
+@php
+$regOpen = env('OTE_REG_OPEN');
+$regOpen = explode('/', $regOpen);
+$regOpen = mktime(0,0,0,$regOpen[0],$regOpen[1],$regOpen[2]);
+$regClose = env('OTE_REG_CLOSE');
+$regClose = explode('/', $regClose);
+$regClose = mktime(0,0,0,$regClose[0],$regClose[1],$regClose[2]);
+$now = strtotime('now');
+@endphp
+
+@if($now >= $regOpen && $now
+<= $regClose)
+
+	<x-forms::notifications :errors="$errors" />
 
 <div class="@if (session()->has('message')) !hidden @endif">
 	<form id="group-reg-form" action="{{ route('groups.store') }}" class="grid mobile:grid-cols-1 tablet:grid-cols-6 gap-6 w-full" method="post" enctype="multipart/form-data" novalidate>
@@ -65,3 +78,22 @@
 
 	</form>
 </div>
+
+@elseif ($now < $regOpen)
+	<div class="text-center">
+	<h2 class="h2 !drop-shadow-none mb-6">Registration is Closed</h2>
+
+	<x-components::reg-closed />
+
+	</div>
+
+
+	@else
+
+	<div class="text-center">
+		<h2 class="h2 !drop-shadow-none mb-6">Registration is Closed</h2>
+
+		<x-components::reg-passed />
+	</div>
+
+	@endif

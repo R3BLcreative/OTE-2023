@@ -1,3 +1,5 @@
+@props(['open'])
+
 <section id="reg-step-one" class="">
 	<row class="items-center">
 
@@ -14,10 +16,12 @@
 
 			<p class="font-semibold">You or your group leader needs to register the church, group, or family for camp. Having your group details allows us to make sure all your sponsors and campers are assigned to your group and we have your numbers correct for camp.</p>
 
+			@if($open)
 			<a href="{{ route('registration.group') }}" title="Start the registration process" aria-label="Start the registration process" class="btn btn_primary">
 				Get Started
 				<i class="fa-duotone fa-arrow-right-to-arc fa-xl"></i>
 			</a>
+			@endif
 		</div>
 	</row>
 </section>
