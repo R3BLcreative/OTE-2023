@@ -19,7 +19,7 @@
 
 				<p class="mobile:text-base tablet:text-lg font-semibold leading-7 text-white">This form is for <em><u>child camper registrations only</u></em>. If you are a adult sponsor of a group or a group leader wanting to register their group, please use one of the corresponding links below.</p>
 
-				<div class="flex flex-row items-center justify-between gap-4">
+				<div class="flex mobile:flex-col tablet:flex-row items-center mobile:justify-center tablet:justify-between gap-4">
 					<a href="{{ route('registration.group') }}" title="Register a group for camp" aria-label="Register a group for camp" class="btn btn_alt_alt">
 						Group Leaders
 						<i class="fa-duotone fa-users-medical fa-xl"></i>
@@ -33,7 +33,7 @@
 			</x-slot>
 
 			{{-- RIGHT CONTENT --}}
-			<x-slot name="rcontent" class="mobile:order-1 tablet:order-2 flex justify-center">
+			<x-slot name="rcontent" class="mobile:order-1 tablet:order-2 tablet:hidden laptop:block flex justify-center">
 				<img src="{{ asset('images/register_child_hero.jpg') }}" alt="A group of 3 young girls with green painted handprints all over them" width="800" height="600" class="rounded-lg drop-shadow-md">
 			</x-slot>
 		</x-components::hero>

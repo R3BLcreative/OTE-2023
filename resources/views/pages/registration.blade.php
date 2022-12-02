@@ -30,7 +30,7 @@
 			</x-slot>
 
 			{{-- RIGHT CONTENT --}}
-			<x-slot name="rcontent" class="mobile:order-1 tablet:order-2 flex justify-center">
+			<x-slot name="rcontent" class="mobile:order-1 tablet:order-2 tablet:hidden laptop:block flex justify-center">
 				<img src="{{ asset('images/register_hero.jpg') }}" alt="An image of four male adult sponsors sitting on a bench under the covered dodgeball barn." width="852" height="602" class="rounded-lg drop-shadow-md">
 			</x-slot>
 		</x-components::hero>

@@ -5,19 +5,19 @@ if($type == 'sponsor') {
 $action = route('sponsors.store');
 $route = 'registration.adult';
 $title = 'Sponsor Details';
-$layout = 'col-span-2';
+$layout = 'mobile:col-span-full tablet:col-span-2';
 }else{
 $action = route('campers.store');
 $route = 'registration.child';
 $title = 'Camper Details';
-$layout = 'col-span-3';
+$layout = 'mobile:col-span-full tablet:col-span-3';
 }
 @endphp
 
 <x-forms::notifications :errors="$errors" />
 
 <div class="@if (session()->has('message')) !hidden @endif">
-	<form id="sponsors-reg-form" action="{{ $action }}" class="grid mobile:grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-6 gap-6" method="post" enctype="multipart/form-data" novalidate>
+	<form id="sponsors-reg-form" action="{{ $action }}" class="grid mobile:grid-cols-1 tablet:grid-cols-6 gap-6 w-full" method="post" enctype="multipart/form-data" novalidate>
 		@csrf
 		@method('post')
 
@@ -30,11 +30,11 @@ $layout = 'col-span-3';
 
 		<h2 class="h3 col-span-full text-3xl uppercase !drop-shadow-none">{{ $title }}</h2>
 
-		<x-fields::select class="col-span-2" id="group" placeholder="Select your group" label="Group Name" :options="$groups" value="{{ old('group') }}" required="1" desc="Select the group you are attending camp with. If you don't see your group, please contact your group leader." />
+		<x-fields::select class="mobile:col-span-full tablet:col-span-2" id="group" placeholder="Select your group" label="Group Name" :options="$groups" value="{{ old('group') }}" required="1" desc="Select the group you are attending camp with. If you don't see your group, please contact your group leader." />
 
-		<x-fields::input class="col-span-2" id="fname" type="text" placeholder="John" label="First Name" value="{{ old('fname') }}" required="1" />
+		<x-fields::input class="mobile:col-span-full tablet:col-span-2" id="fname" type="text" placeholder="John" label="First Name" value="{{ old('fname') }}" required="1" />
 
-		<x-fields::input class="col-span-2" id="lname" type="text" placeholder="Doe" label="Last Name" value="{{ old('lname') }}" required="1" />
+		<x-fields::input class="mobile:col-span-full tablet:col-span-2" id="lname" type="text" placeholder="Doe" label="Last Name" value="{{ old('lname') }}" required="1" />
 
 		<x-fields::input class="{{ $layout }}" id="bday" type="text" placeholder="__-__-____" slots="_" accepts="\d" label="Birthday" value="{{ old('bday') }}" required="1" desc="MM-DD-YYYY" />
 
@@ -47,7 +47,7 @@ $layout = 'col-span-3';
 		'6' => 'Completed 6th',
 		];
 		@endphp
-		<x-fields::select class="col-span-3" id="grade" placeholder="Select one" label="Completed Grade" :options="$grades" value="{{ old('grade') }}" required="1" />
+		<x-fields::select class="mobile:col-span-full tablet:col-span-3" id="grade" placeholder="Select one" label="Completed Grade" :options="$grades" value="{{ old('grade') }}" required="1" />
 		@endif
 
 		@php
@@ -83,7 +83,7 @@ $layout = 'col-span-3';
 
 		<x-fields::input class="col-span-full" id="street" type="text" placeholder="12345 Some Street #456" label="Home Address" value="{{ old('street') }}" required="1" />
 
-		<x-fields::input class="col-span-2" id="city" type="text" placeholder="City" label="City" value="{{ old('city') }}" required="1" />
+		<x-fields::input class="mobile:col-span-full tablet:col-span-2" id="city" type="text" placeholder="City" label="City" value="{{ old('city') }}" required="1" />
 
 		@php
 		$states = [
@@ -91,9 +91,9 @@ $layout = 'col-span-3';
 		];
 		@endphp
 
-		<x-fields::select class="col-span-2" id="state" placeholder="State" label="State" :options="$states" value="{{ old('state') }}" required="1" />
+		<x-fields::select class="mobile:col-span-full tablet:col-span-2" id="state" placeholder="State" label="State" :options="$states" value="{{ old('state') }}" required="1" />
 
-		<x-fields::input class="col-span-2" id="zip" type="text" placeholder="00000" slots="0" accepts="\d" label="Zip" value="{{ old('zip') }}" required="1" />
+		<x-fields::input class="mobile:col-span-full tablet:col-span-2" id="zip" type="text" placeholder="00000" slots="0" accepts="\d" label="Zip" value="{{ old('zip') }}" required="1" />
 
 		@if($type == 'camper')
 
@@ -103,21 +103,21 @@ $layout = 'col-span-3';
 
 		<h2 class="h3 col-span-full text-3xl uppercase !drop-shadow-none">Parent/Gaurdian Details</h2>
 
-		<x-fields::input class="col-span-2" id="gfname" type="text" placeholder="John" label="First Name" value="{{ old('gfname') }}" required="1" />
+		<x-fields::input class="mobile:col-span-full tablet:col-span-2" id="gfname" type="text" placeholder="John" label="First Name" value="{{ old('gfname') }}" required="1" />
 
-		<x-fields::input class="col-span-2" id="glname" type="text" placeholder="Doe" label="Last Name" value="{{ old('glname') }}" required="1" />
+		<x-fields::input class="mobile:col-span-full tablet:col-span-2" id="glname" type="text" placeholder="Doe" label="Last Name" value="{{ old('glname') }}" required="1" />
 
-		<x-fields::input class="col-span-2" id="grel" type="text" placeholder="Dad, Mom, etc." label="Relationship" value="{{ old('grel') }}" required="1" desc="How is the person listed here related to the camper?" />
+		<x-fields::input class="mobile:col-span-full tablet:col-span-2" id="grel" type="text" placeholder="Dad, Mom, etc." label="Relationship" value="{{ old('grel') }}" required="1" desc="How is the person listed here related to the camper?" />
 
-		<x-fields::input class="col-span-3" id="gemail" type="email" placeholder="john@email.com" label="Email" value="{{ old('gemail') }}" required="1" />
+		<x-fields::input class="mobile:col-span-full tablet:col-span-3" id="gemail" type="email" placeholder="john@email.com" label="Email" value="{{ old('gemail') }}" required="1" />
 
-		<x-fields::input class="col-span-3" id="gcemail" type="email" placeholder="john@email.com" label="Confirm Email" value="{{ old('gcemail') }}" required="1" />
+		<x-fields::input class="mobile:col-span-full tablet:col-span-3" id="gcemail" type="email" placeholder="john@email.com" label="Confirm Email" value="{{ old('gcemail') }}" required="1" />
 
-		<x-fields::input class="col-span-2" id="gcphone" type="text" placeholder="(___) ___-____" slots="_" accepts="\d" label="Cell Phone" value="{{ old('gcphone') }}" required="1" />
+		<x-fields::input class="mobile:col-span-full tablet:col-span-2" id="gcphone" type="text" placeholder="(___) ___-____" slots="_" accepts="\d" label="Cell Phone" value="{{ old('gcphone') }}" required="1" />
 
-		<x-fields::input class="col-span-2" id="ghphone" type="text" placeholder="(___) ___-____" slots="_" accepts="\d" label="Home Phone" value="{{ old('ghphone') }}" />
+		<x-fields::input class="mobile:col-span-full tablet:col-span-2" id="ghphone" type="text" placeholder="(___) ___-____" slots="_" accepts="\d" label="Home Phone" value="{{ old('ghphone') }}" />
 
-		<x-fields::input class="col-span-2" id="gwphone" type="text" placeholder="(___) ___-____" slots="_" accepts="\d" label="Work Phone" value="{{ old('gwphone') }}" />
+		<x-fields::input class="mobile:col-span-full tablet:col-span-2" id="gwphone" type="text" placeholder="(___) ___-____" slots="_" accepts="\d" label="Work Phone" value="{{ old('gwphone') }}" />
 
 		@endif
 
@@ -173,14 +173,14 @@ $layout = 'col-span-3';
 			}
 			@endphp
 
-			<div id="immWrap" class="col-span-full grid mobile:grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-6 gap-6 @if($showImm) max-h-[500px] opacity-1 @else max-h-0 opacity-0 @endif transition-all ease-in-out duration-500 overflow-hidden" @if(old('immOptOut'))aria-expanded="false" @else aria-expanded="true" @endif>
-				<x-fields::input class="col-span-3" id="dptdt" type="text" placeholder="__-__-____" slots="_" accepts="\d" label="DPT/DT" value="{{ old('dptdt') }}" required="1" desc="MM-DD-YYYY" />
+			<div id="immWrap" class="col-span-full grid mobile:grid-cols-1 tablet:grid-cols-6 gap-6 @if($showImm) max-h-[500px] opacity-1 @else max-h-0 opacity-0 @endif transition-all ease-in-out duration-500 overflow-hidden" @if(old('immOptOut'))aria-expanded="false" @else aria-expanded="true" @endif>
+				<x-fields::input class="mobile:col-span-full tablet:col-span-3" id="dptdt" type="text" placeholder="__-__-____" slots="_" accepts="\d" label="DPT/DT" value="{{ old('dptdt') }}" required="1" desc="MM-DD-YYYY" />
 
-				<x-fields::input class="col-span-3" id="polio" type="text" placeholder="__-__-____" slots="_" accepts="\d" label="Polio" value="{{ old('polio') }}" required="1" desc="MM-DD-YYYY" />
+				<x-fields::input class="mobile:col-span-full tablet:col-span-3" id="polio" type="text" placeholder="__-__-____" slots="_" accepts="\d" label="Polio" value="{{ old('polio') }}" required="1" desc="MM-DD-YYYY" />
 
-				<x-fields::input class="col-span-3" id="mmr" type="text" placeholder="__-__-____" slots="_" accepts="\d" label="MMR" value="{{ old('mmr') }}" required="1" desc="MM-DD-YYYY" />
+				<x-fields::input class="mobile:col-span-full tablet:col-span-3" id="mmr" type="text" placeholder="__-__-____" slots="_" accepts="\d" label="MMR" value="{{ old('mmr') }}" required="1" desc="MM-DD-YYYY" />
 
-				<x-fields::input class="col-span-3" id="tb" type="text" placeholder="__-__-____" slots="_" accepts="\d" label="TB" value="{{ old('tb') }}" required="1" desc="MM-DD-YYYY" />
+				<x-fields::input class="mobile:col-span-full tablet:col-span-3" id="tb" type="text" placeholder="__-__-____" slots="_" accepts="\d" label="TB" value="{{ old('tb') }}" required="1" desc="MM-DD-YYYY" />
 			</div>
 
 		</div>
@@ -205,31 +205,31 @@ $layout = 'col-span-3';
 
 		<h2 class="h3 col-span-full text-3xl uppercase !drop-shadow-none">Emergency Details</h2>
 
-		<x-fields::input class="col-span-2" id="efname" type="text" placeholder="John" label="Emergency Contact" value="{{ old('efname') }}" required="1" desc="First Name" />
+		<x-fields::input class="mobile:col-span-full tablet:col-span-2" id="efname" type="text" placeholder="John" label="Emergency Contact" value="{{ old('efname') }}" required="1" desc="First Name" />
 
-		<x-fields::input class="col-span-2" id="elname" type="text" placeholder="Doe" value="{{ old('elname') }}" desc="Last Name" />
+		<x-fields::input class="mobile:col-span-full tablet:col-span-2" id="elname" type="text" placeholder="Doe" value="{{ old('elname') }}" desc="Last Name" />
 
-		<x-fields::input class="col-span-2" id="ephone" type="text" placeholder="(___) ___-____" slots="_" accepts="\d" label="Phone Number" value="{{ old('ephone') }}" required="1" />
+		<x-fields::input class="mobile:col-span-full tablet:col-span-2" id="ephone" type="text" placeholder="(___) ___-____" slots="_" accepts="\d" label="Phone Number" value="{{ old('ephone') }}" required="1" />
 
-		<x-fields::input class="col-span-2" id="icompany" type="text" placeholder="United Health" label="Insurance Company" value="{{ old('icompany') }}" />
+		<x-fields::input class="mobile:col-span-full tablet:col-span-2" id="icompany" type="text" placeholder="United Health" label="Insurance Company" value="{{ old('icompany') }}" />
 
-		<x-fields::input class="col-span-2" id="insured" type="text" placeholder="John Doe" label="Name of Insured" value="{{ old('insured') }}" />
+		<x-fields::input class="mobile:col-span-full tablet:col-span-2" id="insured" type="text" placeholder="John Doe" label="Name of Insured" value="{{ old('insured') }}" />
 
-		<x-fields::input class="col-span-2" id="policy" type="text" placeholder="1234567890" label="Policy Number" value="{{ old('policy') }}" />
+		<x-fields::input class="mobile:col-span-full tablet:col-span-2" id="policy" type="text" placeholder="1234567890" label="Policy Number" value="{{ old('policy') }}" />
 
-		<x-fields::input class="col-span-3" id="doctor" type="text" placeholder="John Doe" label="Name of Doctor" value="{{ old('doctor') }}" required="1" />
+		<x-fields::input class="mobile:col-span-full tablet:col-span-3" id="doctor" type="text" placeholder="John Doe" label="Name of Doctor" value="{{ old('doctor') }}" required="1" />
 
-		<x-fields::input class="col-span-3" id="docphone" type="text" placeholder="(___) ___-____" slots="_" accepts="\d" label="Phone Number" value="{{ old('docphone') }}" required="1" />
+		<x-fields::input class="mobile:col-span-full tablet:col-span-3" id="docphone" type="text" placeholder="(___) ___-____" slots="_" accepts="\d" label="Phone Number" value="{{ old('docphone') }}" required="1" />
 
-		<x-fields::input class="col-span-3" id="dentist" type="text" placeholder="John Doe" label="Name of Dentist" value="{{ old('dentist') }}" />
+		<x-fields::input class="mobile:col-span-full tablet:col-span-3" id="dentist" type="text" placeholder="John Doe" label="Name of Dentist" value="{{ old('dentist') }}" />
 
-		<x-fields::input class="col-span-3" id="dentphone" type="text" placeholder="(___) ___-____" slots="_" accepts="\d" label="Phone Number" value="{{ old('dentphone') }}" />
+		<x-fields::input class="mobile:col-span-full tablet:col-span-3" id="dentphone" type="text" placeholder="(___) ___-____" slots="_" accepts="\d" label="Phone Number" value="{{ old('dentphone') }}" />
 		@php
 		$terms = "I understand that any youth or adult with a high fever will be sent home. I hereby authorize the camp health officer to administer medication to this child. If a medical emergency should arise while the above youth or adult is in attendance at TBE, I hereby authorize the camp health officer or camp director to provide care and/or transport them to a medical facility. I further authorize the medical facility to administer necessary care upon arrival. I do understand that camper insurance at TBE is secondary to personal insurance which should be used for any claims occurring at TBE. I acknowledge that I am signing by means of an electronically-produced signature, that shall have the same legal effect as if, such signature had been manually written and shall be deemed to have been signed by myself for the purposes of any statute or rule of law that requires. I acknowledge that, in any legal proceedings between myself and TBE in any way relating to this computer-based registration form, each party expressly waives any right to raise any defence or waiver of liability based upon the execution of this authorization by a party by means of an electronically- produced signature.";
 		@endphp
-		<x-fields::textarea rows="5" class="col-span-3" id="terms" placeholder="" label="Acknowledgements" value="{{ $terms }}" disabled="1" desc="Please read the following statment in full before signing." />
+		<x-fields::textarea rows="5" class="mobile:col-span-full tablet:col-span-3" id="terms" placeholder="" label="Acknowledgements" value="{{ $terms }}" disabled="1" desc="Please read the following statment in full before signing." />
 
-		<x-fields::input class="col-span-3" id="signature" type="text" placeholder="John Doe" label="Emergency Authorization Signature" value="{{ old('signature') }}" desc="Please type your full name above. By typing your name you are accepting the acknowledgements outlined in the Acknowledgments field." required="1" />
+		<x-fields::input class="mobile:col-span-full tablet:col-span-3" id="signature" type="text" placeholder="John Doe" label="Emergency Authorization Signature" value="{{ old('signature') }}" desc="Please type your full name above. By typing your name you are accepting the acknowledgements outlined in the Acknowledgments field." required="1" />
 
 		<div class="col-span-full">
 			<input type="submit" class="btn btn_primary mx-auto" value="Submit Registration Form">

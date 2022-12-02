@@ -12,7 +12,7 @@
 
 			{{-- LEFT CONTENT --}}
 			<x-slot name="lcontent" class="flex justify-center">
-				<img src="{{ asset('images/logo_campTheme.png') }}" alt="Among Us: OTE 2023 Camp Theme" width="898" height="914" class="rounded-lg mobile:max-w-[300px] tablet:max-w-full">
+				<img src="{{ asset('images/logo_campTheme.png') }}" alt="Among Us: OTE 2023 Camp Theme" width="898" height="914" class="rounded-lg mobile:max-w-[300px] laptop:max-w-full">
 			</x-slot>
 
 			{{-- RIGHT CONTENT --}}

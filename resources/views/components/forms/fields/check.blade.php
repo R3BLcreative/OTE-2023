@@ -30,8 +30,8 @@
 	'grid grid-cols-1',
 	'grid grid-cols-1',
 	'grid grid-cols-2',
-	'grid grid-cols-3',
-	'grid grid-cols-4'
+	'grid mobile:grid-cols-1 tablet:grid-cols-3',
+	'grid mobile:grid-cols-1 laptop:grid-cols-4'
 	];
 	@endphp
 	<div class="{{ $grid[$cols] ?? 'grid grid-cols-1' }} gap-4 items-start">

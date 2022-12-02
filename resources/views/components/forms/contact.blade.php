@@ -5,13 +5,13 @@
 		@csrf
 		@method('post')
 
-		<x-fields::input class="col-span-1" id="fname" type="text" placeholder="Your first name" label="First Name" value="{{ old('fname') }}" required="1" />
+		<x-fields::input class="mobile:col-span-full tablet:col-span-1" id="fname" type="text" placeholder="Your first name" label="First Name" value="{{ old('fname') }}" required="1" />
 
-		<x-fields::input class="col-span-1" id="lname" type="text" placeholder="Your last name" label="Last Name" value="{{ old('lname') }}" required="1" />
+		<x-fields::input class="mobile:col-span-full tablet:col-span-1" id="lname" type="text" placeholder="Your last name" label="Last Name" value="{{ old('lname') }}" required="1" />
 
-		<x-fields::input class="col-span-1" id="email" type="email" placeholder="Your email address" label="Email" value="{{ old('email') }}" required="1" />
+		<x-fields::input class="mobile:col-span-full tablet:col-span-1" id="email" type="email" placeholder="Your email address" label="Email" value="{{ old('email') }}" required="1" />
 
-		<x-fields::input class="col-span-1" id="cemail" type="email" placeholder="Confirm your email address" label="Confirm Email" value="{{ old('cemail') }}" required="1" />
+		<x-fields::input class="mobile:col-span-full tablet:col-span-1" id="cemail" type="email" placeholder="Confirm your email address" label="Confirm Email" value="{{ old('cemail') }}" required="1" />
 
 		@php
 		$subjects = [
@@ -22,9 +22,9 @@
 		];
 		@endphp
 
-		<x-fields::select class="col-span-2" id="subject" placeholder="Please select an option" label="What is the reason you are contacting us?" :options="$subjects" value="{{ old('subject') }}" required="1" />
+		<x-fields::select class="col-span-full" id="subject" placeholder="Please select an option" label="What is the reason you are contacting us?" :options="$subjects" value="{{ old('subject') }}" required="1" />
 
-		<x-fields::textarea class="col-span-2" id="message" placeholder="What would you like to ask/say?" label="Message" value="{{ old('message') }}" required="1" />
+		<x-fields::textarea class="col-span-full" id="message" placeholder="What would you like to ask/say?" label="Message" value="{{ old('message') }}" required="1" />
 
 		<input type="submit" class="btn btn_primary" value="Send It">
 	</form>

@@ -3,7 +3,7 @@
 
 		<div class="col-span-full">
 			<span class="text-2xl text-body-50 font-serif font-semibold">STEP 2</span>
-			<h2 class="h2 !text-5xl !drop-shadow-sm text-yellow-500">Deposit</h2>
+			<h2 class="h2 mobile:!text-4xl tablet:!text-5xl !drop-shadow-sm text-yellow-500">Deposit</h2>
 		</div>
 
 		<div class="mobile:col-span-full tablet:col-span-4 laptop:col-span-6 flex flex-col gap-8">
@@ -18,8 +18,8 @@
 			<div class="pl-12 pr-28 py-12 bg-white rounded-lg shadow-lg border border-body-50 relative">
 				<img src="{{ asset('images/register_stamp.png') }}" alt="An image of a postage stamp" width="218" height="265" class="w-[60px] absolute top-2 right-2">
 
-				<h3 class="h3 mb-4 text-3xl text-yellow-500">Send Payments To:</h3>
-				<p class="text-xl text-body-100 leading-8">
+				<h3 class="h3 mb-4 mobile:text-xl tablet:text-3xl text-yellow-500">Send Payments To:</h3>
+				<p class="mobile:text-base tablet:text-xl text-body-100 leading-8">
 					<strong>Over the Edge Preteen Camp</strong><br>
 					4100 North Laurent<br>
 					Victoria, TX 77901
