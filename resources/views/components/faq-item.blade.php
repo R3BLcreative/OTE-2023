@@ -4,7 +4,7 @@
 	<a href="#" class="question flex flex-row flex-nowrap items-center justify-between gap-6 relative" aria-expanded="false">
 		<i class="fa-duotone fa-square-question fa-3x" style="--fa-secondary-color:#e6b517;"></i>
 
-		<h2 class="font-serif font-semibold text-2xl mb-0 w-4/5 text-left">
+		<h2 class="font-serif font-semibold mobile:text-base tablet:text-2xl mb-0 w-4/5 text-left">
 			{{ $question }}
 		</h2>
 

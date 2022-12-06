@@ -11,7 +11,7 @@
 			<div class="col-span-full p-6 bg-white bg-opacity-80 backdrop-blur-sm mobile:w-full tablet:w-3/4 laptop:w-5/6 text-center rounded-xl shadow-md border border-surface-100 font-semibold">
 				<h1 class="font-hero mobile:text-5xl tablet:text-8xl mb-4 text-primary-200 drop-shadow-md tracking-widest">Over the Edge Preteen Camp</h1>
 
-				<div class="font-serif mobile:text-xl tablet:text-3xl font-bold italic mb-8 text-secondary-200">July 17-21, 2023</div>
+				<div class="font-serif mobile:text-xl tablet:text-3xl font-bold italic mb-8 text-secondary-200">{{ setting('camp_dates') }}</div>
 
 				<p class="mb-4">You're invited to 5 days of faith filled fun, biblically based teaching, and deep worship. Your group will not be disappointed! This year we are only offering one session.</p>
 

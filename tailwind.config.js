@@ -25,14 +25,15 @@ module.exports = {
 				ducks: "url('./images/bkg_duckies.jpg')",
 				worship: "url('./images/bkg_worship.jpg')",
 				questions: "url('./images/bkg_questions.jpg')",
+				activities: "url('./images/bkg_activities.jpg')",
 			},
 			colors: {
 				primary: {
-					50: '#FF3030',
-					100: '#FF0000',
-					200: '#BD0000',
-					300: '#800000',
-					400: '#400000',
+					50: '#4360FF',
+					100: '#120FD4',
+					200: '#100DBA',
+					300: '#0D0A94',
+					400: '#070654',
 				},
 				secondary: {
 					50: '#6BFF6B',

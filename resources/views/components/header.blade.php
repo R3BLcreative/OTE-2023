@@ -4,16 +4,16 @@
 		{{-- LOGO --}}
 		<div class="mobile:col-span-2 tablet:col-span-2 laptop:col-span-2">
 			<a href="{{  route('home') }}" title="Back to site home page" aria-label="Back to site home page" class="">
-				<img src="{{ asset('images/logo_red.png') }}" alt="Over the Edge Preteen Camp" width="240" height="131">
+				<img src="{{ asset('images/logo_blue.png') }}" alt="Over the Edge Preteen Camp" width="240" height="131">
 			</a>
 		</div>
 
 		{{-- MENU --}}
 		<nav id="main-nav" class="burger-menu" aria-expanded="false" aria-label="Main Site Navigation">
 			<ul class="flex mobile:flex-col mobile:gap-8 mobile:justify-start mobile:items-center mobile:w-full laptop:flex-row laptop:gap-8 laptop:justify-end laptop:items-center laptop:w-fit">
-				<x-components::main-nav-item class="" route="camp">
+				{{-- <x-components::main-nav-item class="" route="camp">
 					<x-slot name="link" title="Camp 2023 Details">Camp 2023</x-slot>
-				</x-components::main-nav-item>
+				</x-components::main-nav-item> --}}
 
 				<x-components::main-nav-item class="" route="resources">
 					<x-slot name="link" title="Camp Resources">Resources</x-slot>
