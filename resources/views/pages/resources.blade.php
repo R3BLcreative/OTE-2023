@@ -26,8 +26,8 @@
 			</x-slot>
 
 			{{-- RIGHT CONTENT --}}
-			<x-slot name="rcontent" class="mobile:order-1 tablet:order-2 flex justify-center">
-				<img src="{{ asset('images/resources.jpg') }}" alt="An image of two young girls smiling as they enjoy camp" width="800" height="600" class="rounded-lg drop-shadow-md">
+			<x-slot name="rcontent" class="mobile:order-1 tablet:order-2 tablet:hidden laptop:block flex justify-center">
+				<img src="{{ asset('images/resources_hero.jpg') }}" alt="An image of two young girls smiling as they enjoy camp" width="800" height="600" class="rounded-lg drop-shadow-md">
 			</x-slot>
 		</x-components::hero>
 

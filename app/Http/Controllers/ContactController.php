@@ -30,18 +30,18 @@ class ContactController extends Controller {
 
 		// Store request in DB
 		$msg = ContactMsg::create([
-			'fname'		=> strtolower($request->input('fname')),
-			'lname'		=> strtolower($request->input('lname')),
+			'fname'		=> ucwords(strtolower($request->input('fname'))),
+			'lname'		=> ucwords(strtolower($request->input('lname'))),
 			'email'		=> strtolower($request->input('email')),
 			'subject'	=> $request->input('subject'),
 			'message'	=> $request->input('message')
 		]);
 
 		// Send notification email to admin
-		Mail::to('admin@otecamp.com')->bcc('jcook@r3blcreative.com')->send(new ContactNotify($msg));
+		Mail::to('admin@otecamp.com')->send(new ContactNotify($msg));
 
 		// Send notification email to user
-		Mail::to($msg->email)->bcc('jcook@r3blcreative.com')->send(new ContactReceived($msg));
+		Mail::to($msg->email)->send(new ContactReceived($msg));
 
 		// Return with success message
 		$message = "SUCCESS! We have recieved your message and one of our admins will be getting back to you in 24-48 hours. Check your inbox for a copy of the message you just sent.";
