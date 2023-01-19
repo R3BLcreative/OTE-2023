@@ -26,8 +26,18 @@ return [
 			],
 			[
 				'data'	=> 'string',
+				'name'	=> 'late_cost',
+				'value'	=> '$260'
+			],
+			[
+				'data'	=> 'string',
 				'name'	=> 'camp_dates',
 				'value'	=> '07/17/23 - 07/21/23'
+			],
+			[
+				'data'	=> 'string',
+				'name'	=> 'camp_deadline',
+				'value'	=> '06/05/23'
 			],
 			[
 				'data'	=> 'int',
