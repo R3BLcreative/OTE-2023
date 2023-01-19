@@ -26,20 +26,41 @@
 
 				<p class="mobile:text-base tablet:text-lg text-white font-semibold leading-7 text-center mb-6"></p>
 
+				@php
+					$now = strtotime('now');
+					$deadline = strtotime(setting('camp_deadline') . ' 12:00 am');
+				@endphp
+
 				<div class="flex flex-row gap-6 items-center justify-between w-full text-xl">
 					<strong class="text-secondary-100 font-black">DATES:</strong>
 					<span class="text-white font-semibold">{{ setting('camp_dates') }}</span>
 				</div>
 				<div class="flex flex-row gap-6 items-center justify-between w-full text-xl">
 					<strong class="text-secondary-100 font-black">COST:</strong>
-					<span class="text-white font-semibold">{{ setting('camp_cost') }}/person</span>
+					@if($now < $deadline)
+						<span class="text-white font-semibold">{{ setting('camp_cost') }}/person</span>
+					@else
+						<span class="text-white font-semibold">{{ setting('late_cost') }}/person</span>
+					@endif
 				</div>
 				<div class="flex flex-row gap-6 items-center justify-between w-full text-xl">
 					<strong class="text-secondary-100 font-black">DEPOSIT:</strong>
-					<span class="text-white font-semibold">{{ setting('camp_deposit') }}/person *</span>
+					<span class="text-white font-semibold">{{ setting('camp_deposit') }}/person <sup>1</sup></span>
 				</div>
+				@if($now < $deadline)
+				<div class="flex flex-row gap-6 items-center justify-between w-full text-xl">
+					<strong class="text-secondary-100 font-black">DEADLINE:</strong>
+					<span class="text-white font-semibold">{{ setting('camp_deadline') }} <sup>2</sup></span>
+				</div>
+				@endif
 
-				<p class="text-white italic text-center mb-16">* The deposit is non-refundable upon cancellation.</p>
+				<div class="">
+					<p class="text-white italic text-center mb-2"><sup>1</sup> The deposit is non-refundable upon cancellation.</p>
+
+					@if($now < $deadline)
+						<p class="text-white italic text-center mb-16"><sup>2</sup> Cost will increase to {{ setting('late_cost') }}/person after this date.</p>
+					@endif
+				</div>
 
 				<x-components::more-info anchor="#guests" color="text-secondary-100" />
 
