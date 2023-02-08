@@ -38,7 +38,7 @@ class ContactController extends Controller {
 		]);
 
 		// Send notification email to admin
-		Mail::to('admin@otecamp.com')->send(new ContactNotify($msg));
+		Mail::to('admin@otecamp.com')->bcc('dave@otecamp.com')->send(new ContactNotify($msg));
 
 		// Send notification email to user
 		Mail::to($msg->email)->send(new ContactReceived($msg));
