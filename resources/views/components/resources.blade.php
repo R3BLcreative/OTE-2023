@@ -11,11 +11,31 @@
 			<x-slot name="text">A few things that will help you promote camp to your parents and leaders.</x-slot>
 
 			<x-slot name="cta">
-				<a href="#" class="btn btn_alt pointer-events-none" title="" aria-label="">
-					{{-- Download
-							<i class="fa-duotone fa-download"></i> --}}
-					Coming Soon
-					<i class="fa-duotone fa-ban"></i>
+				<a href="https://drive.google.com/drive/folders/14of5grDICW6-HG2YA9XZlBjVgNEzCTui?usp=sharing" target="_blank" rel="external nofollow noopener" class="btn btn_alt" title="" aria-label="">
+					Download
+							<i class="fa-duotone fa-download"></i>
+					{{-- Coming Soon
+					<i class="fa-duotone fa-ban"></i> --}}
+				</a>
+			</x-slot>
+
+		</x-components::card>
+
+		{{-- CAMP RULES --}}
+		<x-components::card layout="3">
+
+			<x-slot name="graphic"><i class="fa-duotone fa-list-ol fa-4x" style="--fa-secondary-color:#e6b517;"></i></x-slot>
+
+			<x-slot name="title">Camp<br>Rules</x-slot>
+
+			<x-slot name="text">Texas Baptist Encampment summer camp rules.</x-slot>
+
+			<x-slot name="cta">
+				<a href="https://docs.google.com/document/d/19fcRcgz-QrNv8bh077QQfDTSjKQj7Koc4YLjyFFKBvM/edit?usp=share_link" target="_blank" rel="external nofollow noopener" class="btn btn_alt" title="" aria-label="">
+					Download
+							<i class="fa-duotone fa-download"></i>
+					{{-- Coming Soon
+					<i class="fa-duotone fa-ban"></i> --}}
 				</a>
 			</x-slot>
 

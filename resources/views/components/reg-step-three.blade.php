@@ -11,6 +11,8 @@
 
 			<p class="text-center font-semibold">Once you have registered your group, you can send the sponsor and camper registration links out to your adult sponsors and parents. The only thing they will need to know from you is the group name you registered.</p>
 
+			<p class="font-semibold">Child campers are limited to those who have <strong>completed 3rd - 6th grade</strong>.</p>
+
 			@if($open)
 			<p class="text-center font-semibold">The links below will also be sent in the email you recieve after you register your group in Step 1.</p>
 

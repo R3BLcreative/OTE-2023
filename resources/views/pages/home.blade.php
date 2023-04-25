@@ -36,6 +36,10 @@
 					<span class="text-white font-semibold">{{ setting('camp_dates') }}</span>
 				</div>
 				<div class="flex flex-row gap-6 items-center justify-between w-full text-xl">
+					<strong class="text-secondary-100 font-black">AGES:</strong>
+					<span class="text-white font-semibold">Completed 3rd-6th</span>
+				</div>
+				<div class="flex flex-row gap-6 items-center justify-between w-full text-xl">
 					<strong class="text-secondary-100 font-black">COST:</strong>
 					@if($now < $deadline)
 						<span class="text-white font-semibold">{{ setting('camp_cost') }}/person</span>

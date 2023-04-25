@@ -23,6 +23,16 @@
 		{{-- FAQ --}}
 		<x-components::faq-item>
 			<x-slot name="question">
+				What is the sponsor and camper ratio?
+			</x-slot>
+			<x-slot name="answer">
+				<p>The ratio is one sponsor to eight campers. For example, one male sponsor of eight boys. The sponsor and the camper has to be of the same sex.</p>
+			</x-slot>
+		</x-components::faq-item>
+
+		{{-- FAQ --}}
+		<x-components::faq-item>
+			<x-slot name="question">
 				What is the Mega Challenge?
 			</x-slot>
 			<x-slot name="answer">
