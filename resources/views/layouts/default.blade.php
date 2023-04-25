@@ -56,7 +56,7 @@
 	<button tabindex="0" class="block h-0 w-0 fixed top-12 overflow-hidden font-semibold text-black rounded-md px-24 focus:h-fit focus:w-fit focus:z-[9999] bg-white" onclick="document.location+='#content';return false;">Skip to main content</button>
 
 	{{-- HEADER --}}
-	@if (!request()->routeIs('coming-soon'))
+	@if (!request()->routeIs('coming-soon') && !request()->routeIs('callsheet'))
 	<x-components::header />
 	@endif
 
@@ -66,7 +66,7 @@
 	</main>
 
 	{{-- FOOTER --}}
-	@if (!request()->routeIs('coming-soon'))
+	@if (!request()->routeIs('coming-soon') && !request()->routeIs('callsheet'))
 	<x-components::footer />
 	@endif
 

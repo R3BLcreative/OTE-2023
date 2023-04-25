@@ -125,5 +125,12 @@ Route::prefix('emails')->group(function () {
 	})->name('emails.reg.user');
 });
 
+
+// CALLSHEET
+Route::get('/callsheet', function () {
+	return view('pages.callsheet');
+})->name('callsheet');
+
+
 // FALLBACK
 Route::fallback(FallbackController::class)->name('fallback');
