@@ -11,12 +11,11 @@ return new class extends Migration {
 	 * @return void
 	 */
 	public function up() {
-		Schema::create('callsheet', function (Blueprint $table) {
+		Schema::create('prize_submissions', function (Blueprint $table) {
 			$table->id();
-			$table->text('name')->nullable();
-			$table->text('church')->nullable();
-			$table->text('camp')->nullable();
-			$table->text('category');
+			$table->text('name');
+			$table->text('church');
+			$table->text('type');
 			$table->boolean('called')->default(false);
 			$table->timestamps();
 		});
@@ -28,6 +27,6 @@ return new class extends Migration {
 	 * @return void
 	 */
 	public function down() {
-		Schema::dropIfExists('callsheet');
+		Schema::dropIfExists('prize_submissions');
 	}
 };

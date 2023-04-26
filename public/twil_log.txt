@@ -1,0 +1,4 @@
+DATE: April 26, 2023, 10:16 pm
+FLAG: twil_webhook.php ARGS
+DATA: {"MSID":"SM9fea9a76833c9d94af6864611d0a6436","from":"+12818418000","type":"ducky","church":"my church","names":["james cook"]}
+------------------------------------------------------------------

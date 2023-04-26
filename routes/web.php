@@ -16,6 +16,7 @@ use App\Mail\ContactNotify;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\FallbackController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\CallsheetController;
 
 // COMING SOON
 Route::get('/coming-soon', function () {
@@ -127,9 +128,13 @@ Route::prefix('emails')->group(function () {
 
 
 // CALLSHEET
-Route::get('/callsheet', function () {
-	return view('pages.callsheet');
-})->name('callsheet');
+Route::prefix('callsheet')->group(function () {
+	Route::get('/', function () {
+		return view('pages.callsheet');
+	})->name('callsheet');
+
+	Route::post('/', [CallsheetController::class, 'list'])->name('callsheet.list');
+});
 
 
 // FALLBACK

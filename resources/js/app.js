@@ -1,4 +1,3 @@
-import { ceil } from 'lodash';
 import './bootstrap';
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -18,32 +17,36 @@ document.addEventListener('DOMContentLoaded', function () {
 	var burgerToggle = document.querySelector('header .burger-toggle');
 	var burgerMenu = document.querySelector('header .burger-menu');
 
-	burgerToggle.addEventListener('click', function (e) {
-		e.stopPropagation();
-		toggleNavigation(this, burgerMenu);
-	});
-
-	document.addEventListener('keyup', function (e) {
-		if (e.key === 'Escape') {
+	if (burgerToggle && burgerMenu) {
+		burgerToggle.addEventListener('click', function (e) {
 			e.stopPropagation();
-			closeNavigation(burgerToggle, burgerMenu);
-		}
-	});
+			toggleNavigation(this, burgerMenu);
+		});
+
+		document.addEventListener('keyup', function (e) {
+			if (e.key === 'Escape') {
+				e.stopPropagation();
+				closeNavigation(burgerToggle, burgerMenu);
+			}
+		});
+	}
 
 	var collapsible = document.querySelectorAll('.collapsible-nav');
 
-	Array.prototype.forEach.call(collapsible, function (el) {
-		var toggle = el.querySelector('.collapsible-nav-toggle');
-		el.addEventListener('click', function (e) {
-			toggleNavigation(toggle, this);
-		});
+	if (collapsible.length > 0) {
+		Array.prototype.forEach.call(collapsible, function (el) {
+			var toggle = el.querySelector('.collapsible-nav-toggle');
+			el.addEventListener('click', function (e) {
+				toggleNavigation(toggle, this);
+			});
 
-		el.addEventListener('keyup', function (e) {
-			if (e.keyCode === ESCAPE) {
-				closeNavigation(toggle, this);
-			}
+			el.addEventListener('keyup', function (e) {
+				if (e.keyCode === ESCAPE) {
+					closeNavigation(toggle, this);
+				}
+			});
 		});
-	});
+	}
 
 	// FAQ ACCORDION
 	function toggleAccordion(toggle, item) {
@@ -54,14 +57,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	var faqs = document.querySelectorAll('.faq-item');
 
-	Array.prototype.forEach.call(faqs, function (el) {
-		var question = el.querySelector('.question');
-		var answer = el.querySelector('.answer');
-		question.addEventListener('click', function (e) {
-			e.preventDefault();
-			toggleAccordion(question, answer);
+	if (faqs.length > 0) {
+		Array.prototype.forEach.call(faqs, function (el) {
+			var question = el.querySelector('.question');
+			var answer = el.querySelector('.answer');
+			question.addEventListener('click', function (e) {
+				e.preventDefault();
+				toggleAccordion(question, answer);
+			});
 		});
-	});
+	}
 
 	// INPUT MASKING
 	// This code empowers all input tags having a placeholder and data-slots attribute
@@ -164,5 +169,26 @@ document.addEventListener('DOMContentLoaded', function () {
 		};
 
 		el.addEventListener('input', limitChars);
+	}
+
+	// CALLSHEET NAMES
+	for (const el of document.querySelectorAll('.callsheet-names')) {
+		el.addEventListener('click', async (e) => {
+			const el = e.currentTarget;
+			const { id } = el.dataset;
+
+			try {
+				const response = await fetch(`/api/callsheet/${id}`, {
+					method: 'PATCH',
+					headers: {
+						'Content-Type': 'application/json',
+					},
+				});
+				const data = await response.json();
+				el.classList.add('hidden');
+			} catch (error) {
+				console.log(error);
+			}
+		});
 	}
 });
