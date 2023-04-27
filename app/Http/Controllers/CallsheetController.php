@@ -27,7 +27,7 @@ class CallsheetController extends Controller {
 			$results = PrizeSubmission::select('id', 'name', 'church')->where('type', $request->input('type'))->inRandomOrder()->groupBy('name', 'church')->limit($request->input('count'))->get();
 		}
 
-		if (!$results) {
+		if ($results->isEmpty()) {
 			$names = [];
 			$gooseEgg = true;
 		} else {

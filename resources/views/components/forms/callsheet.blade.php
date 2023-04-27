@@ -43,7 +43,7 @@
 				selected
 			>Select a prize category</option>
 			<option value="mega">Mega Challenge</option>
-			<option value="mega">Ruber Ducky</option>
+			<option value="ducky">Rubber Ducky</option>
 		</select>
 		@error('type')
 			<span class="text-sm font-semibold italic text-red-700">{{ $message }}</span>
