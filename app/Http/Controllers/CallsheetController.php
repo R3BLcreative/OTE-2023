@@ -64,14 +64,12 @@ class CallsheetController extends Controller {
 			if ($this->type_is_correct(strtolower($body[0]))) {
 				$names = $this->get_names($body);
 
-				$args = [
-					'type'		=> $this->fix_duckie(strtolower($body[0])),
-					'church' 	=> strtolower($body[1]),
-				];
-
 				foreach ($names as $name) {
-					$args['name'] = $name;
-					PrizeSubmission::insert($args);
+					$entry = new PrizeSubmission;
+					$entry->name = $name;
+					$entry->type = $this->fix_duckie(strtolower($body[0]));
+					$entry->church = strtolower($body[1]);
+					$entry->save();
 				}
 
 				$rtxt = (strtolower($body[0]) == 'mega') ? 'mega challenge' : 'rubber ducky';
