@@ -106,7 +106,7 @@ class RegistrationController extends Controller {
 
 
 		// Send notification email to admin
-		Mail::to('admin@otecamp.com')->bcc('dave@otecamp.com')->send(new GroupRegAdminNotify($group));
+		Mail::to('admin@otecamp.com')->cc('dave@otecamp.com')->send(new GroupRegAdminNotify($group));
 
 		// Send notification email to user
 		Mail::to($group->email)->send(new GroupRegLeaderNotify($group));
