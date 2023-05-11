@@ -153,7 +153,7 @@ $now = strtotime('now');
 
 		<x-fields::select class="mobile:col-span-full tablet:col-span-2" id="state" placeholder="State" label="State" :options="$states" value="{{ old('state') }}" required="1" />
 
-		<x-fields::input class="mobile:col-span-full tablet:col-span-2" id="zip" type="text" placeholder="00000" slots="0" accepts="\d" label="Zip" value="{{ old('zip') }}" required="1" />
+		<x-fields::input class="mobile:col-span-full tablet:col-span-2" id="zip" type="text" placeholder="00000" label="Zip" value="{{ old('zip') }}" required="1" />
 
 		@if($type == 'camper')
 

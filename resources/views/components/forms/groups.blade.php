@@ -37,7 +37,7 @@ $now = strtotime('now');
 
 		<x-fields::select class="mobile:col-span-full tablet:col-span-2" id="gstate" placeholder="State" label="State" :options="$states" value="{{ old('gstate') }}" required="1" />
 
-		<x-fields::input class="mobile:col-span-full tablet:col-span-2" id="gzip" type="text" placeholder="00000" slots="0" accepts="\d" label="Zip" value="{{ old('gzip') }}" required="1" />
+		<x-fields::input class="mobile:col-span-full tablet:col-span-2" id="gzip" type="text" placeholder="00000" label="Zip" value="{{ old('gzip') }}" required="1" />
 
 		<hr class="my-6 col-span-full">
 
