@@ -41,6 +41,28 @@
 
 		</x-components::card>
 
+
+		{{-- MED REQS --}}
+		<x-components::card layout="3">
+
+			<x-slot name="graphic"><i class="fa-duotone fa-prescription-bottle fa-4x" style="--fa-secondary-color:#e6b517;"></i></x-slot>
+
+			<x-slot name="title">Medication<br>Requirements</x-slot>
+
+			<x-slot name="text">How medications are to be reported & handled at camp.</x-slot>
+
+			<x-slot name="cta">
+				<a href="https://drive.google.com/file/d/1N8EAegakLkb6rasr6AYuraJ8zw5r_pX8/view?usp=share_link" class="btn btn_alt" title="" aria-label="">
+					Download
+					<i class="fa-duotone fa-download"></i>
+					{{-- Coming Soon
+					<i class="fa-duotone fa-ban"></i> --}}
+				</a>
+			</x-slot>
+
+		</x-components::card>
+
+
 		{{-- ADULT REQS --}}
 		<x-components::card layout="3">
 
@@ -61,25 +83,6 @@
 
 		</x-components::card>
 
-		{{-- MED REQS --}}
-		<x-components::card layout="3">
-
-			<x-slot name="graphic"><i class="fa-duotone fa-prescription-bottle fa-4x" style="--fa-secondary-color:#e6b517;"></i></x-slot>
-
-			<x-slot name="title">Medication<br>Requirements</x-slot>
-
-			<x-slot name="text">How medications are to be reported & handled at camp.</x-slot>
-
-			<x-slot name="cta">
-				<a href="#" class="btn btn_alt pointer-events-none" title="" aria-label="">
-					{{-- Download
-					<i class="fa-duotone fa-download"></i> --}}
-					Coming Soon
-					<i class="fa-duotone fa-ban"></i>
-				</a>
-			</x-slot>
-
-		</x-components::card>
 
 		{{-- SURVIVAL GUIDE --}}
 		<x-components::card layout="3">
