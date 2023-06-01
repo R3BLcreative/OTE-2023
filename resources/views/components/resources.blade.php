@@ -31,7 +31,7 @@
 			<x-slot name="text">Texas Baptist Encampment summer camp rules.</x-slot>
 
 			<x-slot name="cta">
-				<a href="https://docs.google.com/document/d/19fcRcgz-QrNv8bh077QQfDTSjKQj7Koc4YLjyFFKBvM/edit?usp=share_link" target="_blank" rel="external nofollow noopener" class="btn btn_alt" title="" aria-label="">
+				<a href="https://docs.google.com/document/d/19fcRcgz-QrNv8bh077QQfDTSjKQj7Koc4YLjyFFKBvM/edit?usp=share_link" target="_blank" rel="external nofollow noopener" class="btn btn_alt">
 					Download
 							<i class="fa-duotone fa-download"></i>
 					{{-- Coming Soon
@@ -52,7 +52,7 @@
 			<x-slot name="text">How medications are to be reported & handled at camp.</x-slot>
 
 			<x-slot name="cta">
-				<a href="https://drive.google.com/file/d/1N8EAegakLkb6rasr6AYuraJ8zw5r_pX8/view?usp=share_link" class="btn btn_alt" title="" aria-label="">
+				<a href="https://drive.google.com/file/d/1N8EAegakLkb6rasr6AYuraJ8zw5r_pX8/view?usp=share_link" target="_blank" rel="external nofollow noopener" class="btn btn_alt">
 					Download
 					<i class="fa-duotone fa-download"></i>
 					{{-- Coming Soon
@@ -73,7 +73,7 @@
 			<x-slot name="text">Everything leaders & sponsors need to do/know before arriving at camp.</x-slot>
 
 			<x-slot name="cta">
-				<a href="#" class="btn btn_alt pointer-events-none" title="" aria-label="">
+				<a href="#" class="btn btn_alt pointer-events-none" target="_blank" rel="external nofollow noopener">
 					{{-- Download
 					<i class="fa-duotone fa-download"></i> --}}
 					Coming Soon
@@ -94,7 +94,7 @@
 			<x-slot name="text">This is our camp packet. All the day-to-day details needed for your stay at camp.</x-slot>
 
 			<x-slot name="cta">
-				<a href="#" class="btn btn_alt pointer-events-none" title="" aria-label="">
+				<a href="#" class="btn btn_alt pointer-events-none" target="_blank" rel="external nofollow noopener">
 					{{-- Download
 							<i class="fa-duotone fa-download"></i> --}}
 					Coming Soon
@@ -114,7 +114,7 @@
 			<x-slot name="text">Be sure to check back for additional downloads.</x-slot>
 
 			<x-slot name="cta">
-				<a href="#" class="btn btn_alt pointer-events-none" title="" aria-label="">
+				<a href="#" class="btn btn_alt pointer-events-none" target="_blank" rel="external nofollow noopener">
 					{{-- Download
 									<i class="fa-duotone fa-download"></i> --}}
 					Coming Soon
