@@ -63,6 +63,27 @@
 		</x-components::card>
 
 
+		{{-- PACKING --}}
+		<x-components::card layout="3">
+
+			<x-slot name="graphic"><i class="fa-duotone fa-backpack fa-4x" style="--fa-secondary-color:#e6b517;"></i></x-slot>
+
+			<x-slot name="title">Things to<br>Bring</x-slot>
+
+			<x-slot name="text">Download the official OTE Camp packing list. Everything you will need for camp.</x-slot>
+
+			<x-slot name="cta">
+				<a href="https://drive.google.com/file/d/1_SvRTdHurvbHrvHQDSqZsKHIE-SxIz85/view?usp=drive_link" class="btn btn_alt" target="_blank" rel="external nofollow noopener">
+					Download
+					<i class="fa-duotone fa-download"></i>
+					{{-- Coming Soon
+					<i class="fa-duotone fa-ban"></i> --}}
+				</a>
+			</x-slot>
+
+		</x-components::card>
+
+
 		{{-- ADULT REQS --}}
 		<x-components::card layout="3">
 
@@ -97,26 +118,6 @@
 				<a href="#" class="btn btn_alt pointer-events-none" target="_blank" rel="external nofollow noopener">
 					{{-- Download
 							<i class="fa-duotone fa-download"></i> --}}
-					Coming Soon
-					<i class="fa-duotone fa-ban"></i>
-				</a>
-			</x-slot>
-
-		</x-components::card>
-
-		{{-- MORE --}}
-		<x-components::card layout="3">
-
-			<x-slot name="graphic"><i class="fa-duotone fa-triangle-person-digging fa-4x" style="--fa-secondary-color:#e6b517;"></i></x-slot>
-
-			<x-slot name="title">More To<br>Come</x-slot>
-
-			<x-slot name="text">Be sure to check back for additional downloads.</x-slot>
-
-			<x-slot name="cta">
-				<a href="#" class="btn btn_alt pointer-events-none" target="_blank" rel="external nofollow noopener">
-					{{-- Download
-									<i class="fa-duotone fa-download"></i> --}}
 					Coming Soon
 					<i class="fa-duotone fa-ban"></i>
 				</a>
