@@ -3,6 +3,7 @@ name: ote-2023
 environments:
   production:
     memory: 1024
+    timeout: 200
     database: ote-prd
     cli-memory: 512
     tmp-storage: 1024
@@ -17,6 +18,7 @@ environments:
       - 'php artisan migrate --force'
   staging:
     memory: 1024
+    timeout: 200
     database: ote-stg
     cli-memory: 512
     tmp-storage: 1024
