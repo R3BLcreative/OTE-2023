@@ -77,13 +77,13 @@ Route::prefix('pdf')->group(function () {
 
 	Route::get('/download', function () {
 		$regs = Registration::orderBy('group_id')->orderByDesc('type')->get();
-		$pdf = Pdf::loadView('pdf.download', ['regs' => $regs]);
+		$pdf = Pdf::loadView('pdf.download', ['regs' => $regs])->setPaper('letter', 'portrait');
 		return $pdf->download('Camp_' . env('OTE_CAMP_YEAR') . '.pdf');
 	})->name('pdf.download');
 
 	Route::get('/view/{id}', function ($id) {
 		$reg = Registration::where(['id' => $id])->first();
-		$pdf = Pdf::loadView('pdf.form', ['reg' => $reg]);
+		$pdf = Pdf::loadView('pdf.form', ['reg' => $reg])->setPaper('letter', 'portrait');
 		return $pdf->stream();
 	})->name('pdf.form');
 });

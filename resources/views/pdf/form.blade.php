@@ -1,19 +1,19 @@
 <style>
 	h1 {
-		font-size: 24px;
+		font-size: 20px;
 		margin: 0 0 0 0;
 		font-family: 'Helvetica';
 	}
 
 	h2 {
-		font-size: 20px;
-		margin: 30px 0 12px 0;
+		font-size: 16px;
+		margin: 20px 0 10px 0;
 		font-family: 'Helvetica';
 	}
 
 	h3 {
-		font-size: 16px;
-		margin: 0 0 12px 0;
+		font-size: 14px;
+		margin: 0 0 10px 0;
 		color: #555;
 		font-family: 'Helvetica';
 	}
@@ -22,10 +22,15 @@
 		width: 100%;
 	}
 
+	p {
+		margin: 0;
+		padding: 0;
+	}
+
 	.cell {
-		padding: 7px 5px;
+		padding: 5px 5px;
 		border: #555 solid 1px;
-		font-size: 12px;
+		font-size: 11px;
 		font-family: 'Helvetica';
 	}
 
@@ -87,8 +92,8 @@ $sig = rand(1,4);
 				<h1>Texas Baptist Encampment</h1>
 				<h3>HEALTH CARD / {{ strtoupper($reg->type) }} REGISTRATION FORM</h3>
 			</td>
-			<td width="125">
-				<img src="{{ asset('images/logo_red.png') }}" height="70">
+			<td width="100" class="right">
+				<img src="{{ asset('images/logo_red.png') }}" height="50">
 			</td>
 		</tr>
 	</tbody>
