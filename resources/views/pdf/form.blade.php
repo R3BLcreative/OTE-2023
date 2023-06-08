@@ -22,7 +22,7 @@
 		width: 100%;
 	}
 
-	p {
+	p, span, br {
 		margin: 0;
 		padding: 0;
 	}
@@ -60,24 +60,28 @@
 		font-family: 'La Belle Aurore';
 		font-weight: normal;
 		font-size: 18px;
+		line-height: 10px;
 	}
 
 	.sig2 {
 		font-family: 'Ms Madi';
 		font-weight: normal;
 		font-size: 18px;
+		line-height: 15px;
 	}
 
 	.sig3 {
 		font-family: 'Parisienne';
 		font-weight: normal;
 		font-size: 18px;
+		line-height: 15px;
 	}
 
 	.sig4 {
 		font-family: 'Seaweed Script';
 		font-weight: normal;
 		font-size: 18px;
+		line-height: 15px;
 	}
 </style>
 
