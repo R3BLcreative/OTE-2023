@@ -84,6 +84,27 @@
 		</x-components::card>
 
 
+		{{-- SURVIVAL GUIDE --}}
+		<x-components::card layout="3">
+
+			<x-slot name="graphic"><i class="fa-duotone fa-ballot-check fa-4x" style="--fa-secondary-color:#e6b517;"></i></x-slot>
+
+			<x-slot name="title">Survival<br>Guide</x-slot>
+
+			<x-slot name="text">This is our camp packet. All the day-to-day details needed for your stay at camp.</x-slot>
+
+			<x-slot name="cta">
+				<a href="https://drive.google.com/file/d/1DdYmhlnMzTUTxm8mKwe6BSK8CbtzHWBL/view?usp=drive_link" class="btn btn_alt" target="_blank" rel="external nofollow noopener">
+					Download
+							<i class="fa-duotone fa-download"></i>
+					{{-- Coming Soon
+					<i class="fa-duotone fa-ban"></i> --}}
+				</a>
+			</x-slot>
+
+		</x-components::card>
+
+
 		{{-- ADULT REQS --}}
 		<x-components::card layout="3">
 
@@ -97,27 +118,6 @@
 				<a href="#" class="btn btn_alt pointer-events-none" target="_blank" rel="external nofollow noopener">
 					{{-- Download
 					<i class="fa-duotone fa-download"></i> --}}
-					Coming Soon
-					<i class="fa-duotone fa-ban"></i>
-				</a>
-			</x-slot>
-
-		</x-components::card>
-
-
-		{{-- SURVIVAL GUIDE --}}
-		<x-components::card layout="3">
-
-			<x-slot name="graphic"><i class="fa-duotone fa-ballot-check fa-4x" style="--fa-secondary-color:#e6b517;"></i></x-slot>
-
-			<x-slot name="title">Survival<br>Guide</x-slot>
-
-			<x-slot name="text">This is our camp packet. All the day-to-day details needed for your stay at camp.</x-slot>
-
-			<x-slot name="cta">
-				<a href="#" class="btn btn_alt pointer-events-none" target="_blank" rel="external nofollow noopener">
-					{{-- Download
-							<i class="fa-duotone fa-download"></i> --}}
 					Coming Soon
 					<i class="fa-duotone fa-ban"></i>
 				</a>
