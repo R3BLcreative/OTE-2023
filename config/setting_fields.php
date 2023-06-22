@@ -27,7 +27,7 @@ return [
 			[
 				'data'	=> 'string',
 				'name'	=> 'late_cost',
-				'value'	=> '$260'
+				'value'	=> '$250'
 			],
 			[
 				'data'	=> 'string',
