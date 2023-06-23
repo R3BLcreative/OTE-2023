@@ -51,6 +51,7 @@
 					<strong class="text-secondary-100 font-black">DEPOSIT:</strong>
 					<span class="text-white font-semibold">{{ setting('camp_deposit') }}/person <sup>1</sup></span>
 				</div>
+
 				@if($now < $deadline)
 				<div class="flex flex-row gap-6 items-center justify-between w-full text-xl">
 					<strong class="text-secondary-100 font-black">DEADLINE:</strong>
@@ -61,9 +62,9 @@
 				<div class="">
 					<p class="text-white italic text-center mb-2"><sup>1</sup> The deposit is non-refundable upon cancellation.</p>
 
-					@if($now < $deadline)
-						<p class="text-white italic text-center mb-16"><sup>2</sup> Cost will increase to {{ setting('late_cost') }}/person after this date.</p>
-					@endif
+					{{-- @if($now < $deadline)
+						<p class="text-white italic text-center mb-16"><sup>2</sup> Cost will increase to {{ setting('late_cost') }}/person after {{ setting('camp_deadline') }}.</p>
+					@endif --}}
 				</div>
 
 				<x-components::more-info anchor="#guests" color="text-secondary-100" />
