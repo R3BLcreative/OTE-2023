@@ -37,7 +37,7 @@ return [
 			[
 				'data'	=> 'string',
 				'name'	=> 'camp_deadline',
-				'value'	=> '07/18/23'
+				'value'	=> '07/16/23'
 			],
 			[
 				'data'	=> 'int',
