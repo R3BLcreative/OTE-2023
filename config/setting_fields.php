@@ -22,7 +22,7 @@ return [
 			[
 				'data'	=> 'string',
 				'name'	=> 'camp_close',
-				'value'	=> '07/02/2023'
+				'value'	=> '07/22/2023'
 			],
 			[
 				'data'	=> 'string',
