@@ -25,7 +25,19 @@ Route::get('/coming-soon', function () {
 
 // HOME
 Route::get('/', function () {
-	return view('pages.home');
+	$campOpen = setting('camp_open');
+	$campOpen = explode('/', $campOpen);
+	$campOpen = mktime(0,0,0,$campOpen[0],$campOpen[1],$campOpen[2]);
+	$campClose = setting('camp_close');
+	$campClose = explode('/', $campClose);
+	$campClose = mktime(0,0,0,$campClose[0],$campClose[1],$campClose[2]);
+	$now = strtotime('now');
+
+	if($now >= $campOpen && $now <= $campClose) {
+		return view('pages.home');
+	}else{
+		return view('pages.coming-soon');
+	}
 })->name('home');
 
 // RESOURCES

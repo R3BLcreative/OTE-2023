@@ -1,4 +1,4 @@
-@props(['seo', 'main'])
+@props(['seo', 'main', 'showNav' => true])
 
 <!DOCTYPE html>
 
@@ -145,7 +145,7 @@
 	>Skip to main content</button>
 
 	{{-- HEADER --}}
-	@if (!request()->routeIs('coming-soon') && !request()->routeIs('callsheet') && !request()->routeIs('callsheet.list'))
+	@if (!request()->routeIs('coming-soon') && !request()->routeIs('callsheet') && !request()->routeIs('callsheet.list') && $showNav !== false)
 		<x-components::header />
 	@endif
 
@@ -161,7 +161,7 @@
 	</main>
 
 	{{-- FOOTER --}}
-	@if (!request()->routeIs('coming-soon') && !request()->routeIs('callsheet') && !request()->routeIs('callsheet.list'))
+	@if (!request()->routeIs('callsheet') && !request()->routeIs('callsheet.list'))
 		<x-components::footer />
 	@endif
 

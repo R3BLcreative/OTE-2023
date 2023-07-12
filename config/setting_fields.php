@@ -15,9 +15,24 @@ return [
 		'desc'			=> 'All the general settings for camp',
 		'elements'	=> [
 			[
-				'data'	=> 'string', // data type, string, int, boolean
-				'name'	=> 'camp_deposit', // unique name for field
-				'value'	=> '$130' // default value if you want
+				'data'	=> 'string',
+				'name'	=> 'camp_open',
+				'value'	=> '11/01/2022'
+			],
+			[
+				'data'	=> 'string',
+				'name'	=> 'camp_close',
+				'value'	=> '07/02/2023'
+			],
+			[
+				'data'	=> 'string',
+				'name'	=> 'camp_deposit',
+				'value'	=> '$130'
+			],
+			[
+				'data'	=> 'string',
+				'name'	=> 'camp_deposit_due',
+				'value'	=> '06/05/2023'
 			],
 			[
 				'data'	=> 'string',
